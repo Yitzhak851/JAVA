@@ -1,12 +1,13 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
+This is the project README file. Here, I'm describe my project.
+This program reads an integar which represents Milliseconds and converts it do days,
+hours, minutes and seconds.
+The user needs to enter the number of millisiseconds 
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: Converting from Milliseconds to days, hours, minutes and seconds.
+PURPOSE OF PROJECT: Practice
+VERSION or DATE: version 1.0 date 13/11/21
+HOW TO START THIS PROJECT: - 
+AUTHORS: Yitzhak Bar-or
+USER INSTRUCTIONS: -
