@@ -7,6 +7,6 @@ public class HelloWorld
 {
     public static void main (String[] args)
     {
-        System.out.println("Helloo World");//this line is my first program
+        System.out.println("Hello World");//this line is my first program
     }
 }
