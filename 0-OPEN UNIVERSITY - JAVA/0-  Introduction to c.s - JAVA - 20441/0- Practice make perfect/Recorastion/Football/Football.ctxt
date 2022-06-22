@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Football
+comment1.params=g1\ g2
+comment1.target=int\ goal(int,\ int)
+comment1.text=\r\nRepresente\ the\ few\ ways\ to\ achieve\ score\ ....\r\n@param\ \r\n@param\ \r\n
+numComments=2
