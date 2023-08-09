@@ -4,7 +4,7 @@
  * @version 1.0 date 13/11/21
  */
 import java.util.Scanner;//The command import from 'java' the user's ability to type options
-public class Einstein//the public class name
+public class Einstain//the public class name
 {
     public static void main (String[]args)
     {//Start the main method

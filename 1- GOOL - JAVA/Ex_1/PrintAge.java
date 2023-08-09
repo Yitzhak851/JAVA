@@ -10,22 +10,14 @@
 
 import javax.swing.JOptionPane;
 
-
 public class PrintAge {
-    
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         String YearBirth = JOptionPane.showInputDialog("Enter your year of birth");
         String ID = JOptionPane.showInputDialog("Enter your ID");
         String Height = JOptionPane.showInputDialog("Enter your Height");
         String Gender = JOptionPane.showInputDialog("Enter your Gender - Female/ Male ?");
-        
-        
         int age = 2022 - (Integer.parseInt(YearBirth));
-        JOptionPane.showMessageDialog(null, " Your details are:"
-                                            ," Yoar age:"  + age
-                                            ," Your ID:" + ID
-                                            , " Your Height:" + Height
-                                            , " Your Gender:" + Gender );
+        JOptionPane.showMessageDialog(null, " Your details are:", " Yoar age:" + age, " Your ID:" + ID,
+                " Your Height:" + Height, " Your Gender:" + Gender);
     }
-    
-}    
+}
