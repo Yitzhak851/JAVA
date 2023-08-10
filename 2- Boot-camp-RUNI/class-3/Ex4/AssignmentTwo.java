@@ -16,16 +16,18 @@ public class AssignmentTwo {
         int number = scanner.nextInt();
 
         // Check if the number is outside of the range 0-100 inclusive, print "WOW".
-        if (number >= 100 ) {
+        if (number >= 100) {
             System.out.println("WOW!!");
-        } else if {
-            // •	Otherwise, if it is a power of 10, print "SUCH POWER".
-
+        } else if (number == 10 || number == 100) {
+            // • Otherwise, if it is a power of 10, print "SUCH POWER".
+            System.out.println("SUCH POWER!!");
+        } else if (number % 7 == 0) {
+            // • Otherwise, if is a multiple of 7, print "MUCH LUCK".
+            System.out.println("MUCH LUCK!!");
+        } else {
+            // • Otherwise, print "VERY CODE".
+            System.out.println("VERY CODE!!");
         }
-
-
-
-
         scanner.close();
     }
 }
