@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class AssignmentOne {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter an integer in the range 10-100: ");
+        System.out.print("Enter an integer in the range 0-100: ");
         int number = scanner.nextInt();
 
         // Check if the number is between 0 and 100 (inclusive)
