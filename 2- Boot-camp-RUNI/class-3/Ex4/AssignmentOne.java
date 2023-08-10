@@ -13,10 +13,13 @@ public class AssignmentOne {
         // Check if the number is between 0 and 100 (inclusive)
         if (number >= 0 && number <= 100) {
             // Extract the first and last digits
-            int firstDigit = number / 10;
-            int lastDigit = number % 10;
-            System.out.println("First digit: " + firstDigit);
-            System.out.println("Last digit: " + lastDigit);
+            int count = 0; // To store the count of digits
+            // Counting the digits using the modulo operator
+            while (number > 0) {
+                number /= 10; // Remove the last digit
+                count++;
+            }
+            System.out.println("Number of digits: " + count);
 
         } else {
             System.out.println("The number is not between 0 and 100.");
