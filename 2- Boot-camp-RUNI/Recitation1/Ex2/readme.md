@@ -20,18 +20,16 @@ with the following restrictions -
 
 <!-- Assignment 3 -->
 Complete the following program to print three sentences about yourself: name, birthday, and height.
-
 public class AssignmentThree {
-	
 	public static void main(String[] args) {
-
 		double height; 	// Holds the author’s height in meters 
 		int birth_year;		// Holds the year author was born 
-
 		// YOUR CODE		
-		
 	}
 }
 
 Expected Output:
+Hi, My name is Yitzhak Bar-or.
+I was born in 31/03/1997.
+I am 1.76 meters tall.
 
