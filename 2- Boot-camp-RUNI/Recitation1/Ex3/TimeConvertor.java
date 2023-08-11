@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class TimeConvertor {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,7 +8,6 @@ public class TimeConvertor {
         int hours = (int) (seconds / 3600);
         int minutes = (int) ((seconds % 3600) / 60);
         int secs = (int) (seconds % 60);
-        
         int milliseconds = (int) ((seconds * 1000) % 1000);
         
         System.out.println("Time in HH:mm:ss format: " + formatTime(hours, minutes, secs));
