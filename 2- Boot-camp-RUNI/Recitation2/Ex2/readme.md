@@ -1,21 +1,22 @@
 Control-Flow
 Conditions
-<!-- Exercise 1 -->
+<!-- Exercise 1
 In some country, a year which is divisible by 4 is an election year. 
 For example, the years 8 and 2016 are election years, while the year 2017 is not. 
 In addition, only citizens who are 18 years or older are allowed to vote. 
 Given a year and an age, 
 print to the screen "Allowed" if it is an election year
- and the person is allowed to vote, and "Not allowed" otherwise.
+ and the person is allowed to vote, and "Not allowed" otherwise. -->
 
-<!-- Exercise 2 -->
+<!-- Exercise 2
 Given a whole number: 
 1. Check if the number is even/odd and print the answer to the screen. 
 2. Print whether the number is bigger than 500. 
 3. Print whether the number is smaller than 400. 
 
 Example output with the number '589':
- 
+
+
 <!-- Exercise 3 -->
 Given a 3 digit whole number (e.g., ‘int num = 123’): 
 1. Print the sum of all digits. 
