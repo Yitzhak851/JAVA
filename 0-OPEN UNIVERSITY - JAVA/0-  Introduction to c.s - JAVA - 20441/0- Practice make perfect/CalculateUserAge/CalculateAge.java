@@ -1,3 +1,4 @@
+
 /**
  * Calculating the age of the user.
  *
@@ -5,14 +6,15 @@
  * @1.1 (a version number)
  */
 import java.util.Scanner;
-public class CalculateAge{
-    
+
+public class CalculateAge {
+
 }
 /**
  * 
- public class WomanPensionAge {
-     //public static void main ();sting args;
-     //a constant 
-}
-
-*/
+ * public class WomanPensionAge {
+ * //public static void main ();sting args;
+ * //a constant
+ * }
+ * 
+ */

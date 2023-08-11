@@ -1,5 +1,4 @@
 
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,16 +7,14 @@ import org.junit.jupiter.api.Test;
 /**
  * The test class NumbersOfDaysTest.
  *
- * @author  (your name)
+ * @author (your name)
  * @version (a version number or a date)
  */
-public class NumbersOfDaysTest
-{
+public class NumbersOfDaysTest {
     /**
      * Default constructor for test class NumbersOfDaysTest
      */
-    public NumbersOfDaysTest()
-    {
+    public NumbersOfDaysTest() {
     }
 
     /**
@@ -26,8 +23,7 @@ public class NumbersOfDaysTest
      * Called before every test case method.
      */
     @BeforeEach
-    public void setUp()
-    {
+    public void setUp() {
     }
 
     /**
@@ -36,7 +32,6 @@ public class NumbersOfDaysTest
      * Called after every test case method.
      */
     @AfterEach
-    public void tearDown()
-    {
+    public void tearDown() {
     }
 }
