@@ -11,9 +11,10 @@ import java.util.Scanner;
 
 public class AssignmentTwo {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter an integer: ");
-        int number = scanner.nextInt();
+       // Scanner scanner = new Scanner(System.in);
+        //System.out.print("Enter an integer: ");
+        //int number = scanner.nextInt();
+	int number =233;
 
         // Check if the number is outside of the range 0-100 inclusive, print "WOW".
         if (number >= 100) {
@@ -28,6 +29,6 @@ public class AssignmentTwo {
             // • Otherwise, print "VERY CODE".
             System.out.println("VERY CODE!!");
         }
-        scanner.close();
+       // scanner.close();
     }
 }
