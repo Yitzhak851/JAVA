@@ -1,21 +1,19 @@
 If-then-else Statements
 Assignments and Operations
 
-Assignment 1
+<!-- Assignment 1 -->
 Given a number in the range 0-100 (inclusive), print the number of digits of the number.
 You must use the modulo (%) operator.
-
 For example, given the number 99, the program will print 2. Given the number 100, the program will print 3.
 
 public class AssignmentOne {
 	public static void main(String[] args) {
 		int number = 17; 	// Holds the number
-
 		// YOUR CODE		
 	}
 }
 
-Assignment 2
+<!-- Assignment 2 -->
 Given a number (integer): 
 	If the number is outside of the range 0-100 inclusive, print "WOW".
 	Otherwise, if it is a power of 10, print "SUCH POWER".
@@ -25,14 +23,14 @@ Given a number (integer):
 For example, for the number 49 the program will print “MUCH LUCK”.
 For the number 101 the program will print “WOW”.
 
-Assignment 3
+<!-- Assignment 3 -->
 Given 2 numbers:
 If the two numbers are equal, print “they are equal”.
 Otherwise, if one of them is bigger than the other, print the larger of the two numbers.
 
 For example, given the numbers 2 and 2 the program will print “equal”. Given the numbers 2 and 3 the program will print “3”.
 
-Assignment 4
+<!-- Assignment 4 -->
 A triangle is valid if the sum of lengths of any two sides is larger than the length of the third side. For example, the sides with lengths 5, 7 and 10 form a valid triangle:
 5+7>10 - Triangle A
 7+10>5 - Triangle B
@@ -45,7 +43,7 @@ If they can represent a valid triangle, print "Valid triangle". Otherwise, print
 For example, given the numbers 5, 7, 10, the program will print “Valid triangle”. However, given the numbers 1, 4, 7 the program will print “Invalid triangle”.
 
  
-Assignment 5
+<!-- Assignment 5 -->
 We are going to build a sentence generator that is based on the user's choice.
 Observe the following program skeleton:
 

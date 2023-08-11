@@ -4,14 +4,14 @@
 
 public class AssignmentOne {
     public static void main(String[] args) {
-        int number = 233 ;
+        int number = 233;
         // Check if the number is between 0 and 100 (inclusive)
         if (number >= 0 && number <= 100) {
             if ((number % 100) == 0) {
                 System.out.println("Number of digits: 3 ");
             } else if (((number % 100) <= 9) && ((number % 100) > 0)) {
                 System.out.println("Number of digits: 1 ");
-            } else if (((number % 100) > 9) ) {
+            } else if (((number % 100) > 9)) {
                 System.out.println("Number of digits: 2 ");
             }
         } else {
