@@ -1,19 +1,24 @@
-Variables
-Declarations, Assignments and Beyond
-Assignment 1
-Write a Java program to declare four variables, then assign the values 1, 2, 3.14 and false to them, respectively. 
+<!-- Variables -->
+<!-- Declarations, Assignments and Beyond -->
+
+<!-- Assignment 1 -->
+Write a Java program to declare four variables,
+then assign the values 1, 2, 3.14 and false to them,respectively. 
 Finally, display their values on the screen, each one on a separate line. 
 Expected Output:
+1
+2
+3.14
+false
 
- 
-
-Assignment 2
-Write a Java program to print: H3110 W0r1d 2.0 true with the following restrictions - 
+<!-- Assignment 2 -->
+Write a Java program to print: " H3110 W0r1d 2.0 true " 
+with the following restrictions - 
 ●	All variables must contain different values 
 ●	At least 4 different data types must be used
-●	All variables must be concatenated into a final string variable which will then be printed to the screen 
+●	All variables must be concatenated into a final string variable which will then be printed to the screen
 
-Assignment 3
+<!-- Assignment 3 -->
 Complete the following program to print three sentences about yourself: name, birthday, and height.
 
 public class AssignmentThree {
