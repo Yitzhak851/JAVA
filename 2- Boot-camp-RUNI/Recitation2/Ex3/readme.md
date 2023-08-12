@@ -1,7 +1,9 @@
 Control-Flow
 Inputs
-<!-- Exercise 1 -->
-Write a Java program that receives a single number as an argument. The program will print out "true" if the number is greater than 100 and divisible by 3. Otherwise, it should print out "false".
+<!-- Exercise 1
+Write a Java program that receives a single number as an argument. 
+The program will print out "true" if the number is greater than 100 and divisible by 3. 
+Otherwise, it should print out "false". -->
 
 <!-- Exercise 2 -->
 Write a program that receives three inputs – a number, 
