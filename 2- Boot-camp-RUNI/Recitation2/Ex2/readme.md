@@ -18,7 +18,7 @@ Example output with the number '589':
 
 
 <!-- Exercise 3 -->
-Given a 3 digit whole number (e.g., ‘int num = 123’): 
+<!-- Given a 3 digit whole number (e.g., ‘int num = 123’): 
 1. Print the sum of all digits. 
 2. Print the average of all digits (this could be of type ‘double’!). 
 3. Print the digit with the largest value of the number. 
@@ -26,4 +26,4 @@ Given a 3 digit whole number (e.g., ‘int num = 123’):
 5. Print the digit with the smallest value of the number. 
 You may assume that all the digits are different from one another (i.e., a number such as ‘111’ will not be checked).
 
-Example output given the number ‘589’:  
+Example output given the number ‘589’:   -->
