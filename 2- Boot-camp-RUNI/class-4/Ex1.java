@@ -8,7 +8,6 @@ public class Ex1 {
         int secondInt = Integer.parseInt(second);
         int sum1 = firstInt + secondInt;
 
-
         System.out.println("first input : " + first);
         System.out.println("first input : " + second);
         System.out.println("sum1 input : " + sum1);
