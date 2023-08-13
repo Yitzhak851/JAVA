@@ -1,7 +1,4 @@
-
-
 public class Assignment45 {
-
     public static void main(String[] args) {
         int numMin = 2;
         int numMax = 7;

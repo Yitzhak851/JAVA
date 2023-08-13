@@ -1,4 +1,4 @@
-public class Assignment32 {
+public class Assignment33 {
     public static void main(String[] args) {
 
         int x = Integer.parseInt(args[0]);
@@ -9,6 +9,7 @@ public class Assignment32 {
         boolean areEqual3 = args[1].equals("*");
         boolean areEqual4 = args[1].equals("/");
         boolean areEqual5 = args[1].equals("%");
+        boolean areEqual6 = args[1].equals("**");
 
         int result = 0;
 
@@ -26,6 +27,9 @@ public class Assignment32 {
             System.out.println("result: " + result);
         } else if (areEqual5) {
             result = (x % y);
+            System.out.println("result: " + result);
+        } else if (areEqual6) {
+            result = (x ^ y);
             System.out.println("result: " + result);
         } else {
             System.out.println("please insert corect opertor");
