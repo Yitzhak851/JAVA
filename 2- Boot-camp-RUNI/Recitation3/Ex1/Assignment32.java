@@ -14,7 +14,7 @@ public class Assignment32 {
         int n = Integer.parseInt(args[0]);
         // create for loop
         for (int i = 1; i <= (n); i++) {
-            for (int j = 0; j <= (n); j++) {
+            for (int j = 1; j <= (n); j++) {
                 System.out.print(i + " ");
             }
             System.out.println();
