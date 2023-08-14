@@ -9,18 +9,17 @@
 // 	1 2 3 4 
 // 	1 2 3 4 5 
 
-
 public class Assignment33 {
     public static void main(String[] args) {
         // defined that getting argument from the user
         int n = Integer.parseInt(args[0]);
         // create for loop
         for (int i = 1; i <= (n); i++) {
-            System.out.print( i + " ");
-
-            for (int j = 1; j <= (n); j++) {
-                System.out.println();
+            for (int j = 1; j <= (i); j++) {
+                System.out.print(j + " ");
             }
+            System.out.println();
+
         }
     }
 }
