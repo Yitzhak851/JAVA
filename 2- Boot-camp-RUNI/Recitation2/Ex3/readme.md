@@ -23,8 +23,8 @@ public class Example {
 } --> -->
 
 <!-- Exercise 3 -->
-Extend the previous exercise to also include a “power of” (denoted “**”) operation.
+<!-- Extend the previous exercise to also include a “power of” (denoted “**”) operation. -->
 <!-- //TODO- at Ex33  -->
 
 
-cls- command to clear to cmd
+<!-- cls- command to clear to cmd -->
