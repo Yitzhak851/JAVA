@@ -11,7 +11,7 @@ public class Assignment33 {
         boolean areEqual5 = args[1].equals("%");
         boolean areEqual6 = args[1].equals("**");
 
-        int result = 0;
+        int result = 1;
 
         if (areEqual1) {
             result = (x + y);
@@ -29,8 +29,10 @@ public class Assignment33 {
             result = (x % y);
             System.out.println("result: " + result);
         } else if (areEqual6) {
-            result = (x ^ y);
+            for (int i = 1; i <= y ; i++){
+	        result *= x;
             System.out.println("result: " + result);
+            }
         } else {
             System.out.println("please insert corect opertor");
         }
