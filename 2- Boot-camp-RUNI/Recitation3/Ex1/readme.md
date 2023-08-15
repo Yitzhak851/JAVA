@@ -34,7 +34,7 @@ For example, for n=5, the program prints to the screen:
  -->
 
 <!-- Assignment 4 -->
-Use a for loop to draw an upside-down right triangle made of the column index.
+<!-- Use a for loop to draw an upside-down right triangle made of the column index.
 (Clarification, n should be set in main, rather than be given as a command-line argument.) 
 
 For example, for n=5, the program prints to the screen: 
@@ -42,7 +42,7 @@ For example, for n=5, the program prints to the screen:
 	1 2 3 4
 	1 2 3 
 	1 2 
-	1
+	1 -->
 
 
 <!-- Assignment 5 -->
