@@ -19,7 +19,6 @@ public class Assignment33 {
                 System.out.print(j + " ");
             }
             System.out.println();
-
         }
     }
 }
