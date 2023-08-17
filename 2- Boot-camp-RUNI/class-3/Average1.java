@@ -17,6 +17,6 @@ public class Average1 {
             index++;
             sum += num;
         } while ((num) != (-1));
-        System.out.println("Average is:" + (sum+1)/(index-1));
+        System.out.println("Average is:" + (sum + 1)/(index - 1)); 
     }
 }

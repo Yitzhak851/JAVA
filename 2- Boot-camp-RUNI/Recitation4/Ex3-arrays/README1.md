@@ -35,3 +35,29 @@ For example:
 Clarification: the user should declare the variable num and array to values of his/her choice in
 the main. That is, the variables should not be passed as command line arguments.
 Note: If no such pairs exist, print “no pairs”
+
+
+Assignment 4
+Write a program that receives as input an integer n and creates an array of size n which
+consists of the first n Fibonacci numbers.
+For example, for n=6 the program creates the array {1, 1, 2, 3, 5, 8} and then prints each
+element in the array on a separate line.
+Note: You may assume n >= 2.
+Example output (for n=6):
+Assignment 5
+Write a program which takes as input a 1-dimensional array and prints the multiplication table of
+that array.
+Hint: use '\t' to print a tab
+Note: The array sizes may vary. Your function should support arrays of different sizes.
+For example, if arr = {2, 5, 7, 8} the program should output the following:
+1
+1
+2
+3
+5
+8
+| 2 5 7 8
+2| 4 10 14 16
+5| 10 25 35 40
+7| 14 35 49 56
+8| 16 40 56 64
