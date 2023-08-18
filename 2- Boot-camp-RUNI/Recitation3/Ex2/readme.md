@@ -1,7 +1,8 @@
-Functions
-Void, Value return and more
+<!-- Functions
+Void, Value return and more -->
 <!-- Assignment 1 -->
-Write a Java program that prints to the screen 10 rows of asterisk characters (*) in ascending order as follows: 
+<!-- Write a Java program that prints to the screen 
+10 rows of asterisk characters (*) in ascending order as follows: 
 *
 **
 ***
@@ -11,20 +12,21 @@ Write a Java program that prints to the screen 10 rows of asterisk characters (*
 *******
 ********
 *********
-**********
+********** -->
 
-To do so, use a method named printStarRow(...) that receives an integer and prints to the screen a corresponding number of asterisk characters. This function should be used 10 times (once per row).
+<!-- To do so, use a method named printStarRow(...)  -->
+<!-- that receives an integer and prints to the screen a corresponding number of asterisk characters. 
+This function should be used 10 times (once per row).
 For example, given the input “5”, the expected output of printStarRow(5) is:
-*****
-
+***** -->
 
 <!-- Assignment 2 -->
-Write a Java program that can print four types of smiley faces. The smiley will be printed according to the user’s choice (i.e., an integer 1 – 4)
+<!-- Write a Java program that can print four types of smiley faces. The smiley will be printed according to the user’s choice (i.e., an integer 1 – 4)
 1.	Smiling [ :-) ]
 2.	Winking [ ;-) ]
 3.	Confused [ :-/ ]
 4.	Frowning [ :-( ].
-Use a method called printSmiley(…) that receives as an argument an integer representing the type of smiley to be printed. 
+Use a method called printSmiley(…) that receives as an argument an integer representing the type of smiley to be printed.  -->
  
 <!-- Assignment 3 -->
 A prime number (מספר ראשוני) is a number greater than 1 whose only whole-number factors are 1 and itself. For example, 5 is prime because it only divides in 5 and 1.
@@ -32,6 +34,15 @@ Write a function that receives as input an integer number,
 and returns true if the number is prime and false otherwise.
 Then, using the previous function, write a program that prints all the prime numbers between 2 and an integer number (which is given as a command line argument).
 Example output: 
+>>run assignment3 20
+2
+3
+5
+7
+11
+13
+17
+19
   
 
 <!-- Assignment 4 (BONUS) -->

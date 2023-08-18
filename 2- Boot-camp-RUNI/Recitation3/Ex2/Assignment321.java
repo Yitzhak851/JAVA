@@ -12,3 +12,5 @@ public class Assignment321 {
         System.out.println();
     }
 }
+
+// printStarRow(5); >> "*****" 
