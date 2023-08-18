@@ -12,19 +12,16 @@
 public class Assignment35 {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);// user put 5
-        for (int i = n; i >= 0; i--) {
-            for (int j = 1; j <= i; j++) {
-                System.out.print(" * ");
+        for (int i = n; i >= 0; i--) {//Run to build rows    (i=3) i:-- /n || (2)i:-- /n  ||(1) i:-- /n
+            for (int j = 1; j <= i; j++) {//Run to build "*" (i=3) j:1-3   || (2)j:1-2    ||(1) 1-1
+                System.out.print("  ");//
             }
-            System.out.println();
-        }
-
-        int d = Integer.parseInt(args[0]);// user put 5
-        for (int j = d; j >= 0; j--) {
-            for (int i = 1; i <= j; i++) {
-                System.out.print(" * ");
+            int z = i;
+            while(z <= n){                  //Run to build "O" (i=3) p:3=3  || (2) i=2,3   ||(1) 1-3
+                System.out.print("* ");
+                z++;
             }
-            System.out.println();
+            System.out.println();// new line
         }
     }
 }

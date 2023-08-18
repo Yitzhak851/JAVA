@@ -46,15 +46,14 @@ For example, for n=5, the program prints to the screen:
 
 
 <!-- Assignment 5 -->
-Given an integer n, use a for loop to draw a right-aligned triangle made of asterisks.
+<!-- Given an integer n, use a for loop to draw a right-aligned triangle made of asterisks.
 (Clarification, n should be set in main, rather than be given as a command-line argument.) 
-
 For n = 5, the program should print the following to the screen: 
 	     *
 	    **
 	   ***
 	  ****
-	 *****
+	 ***** -->
 
 
 <!-- Assignment 6 (BONUS) -->
