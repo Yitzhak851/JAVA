@@ -57,13 +57,13 @@ For n = 5, the program should print the following to the screen:
 
 
 <!-- Assignment 6 (BONUS) -->
-Use a for loop to draw the following shape:
+<!-- Use a for loop to draw the following shape:
 
 	54321 12345
 	4321     1234
 	321         123
 	21             12
-	1                 1
+	1                 1 -->
 
 
 

@@ -16,10 +16,8 @@ public class Assignment35 {
             for (int j = 1; j <= i; j++) {//Run to build "*" (i=3) j:1-3   || (2)j:1-2    ||(1) 1-1
                 System.out.print("  ");//
             }
-            int z = i;
-            while(z <= n){                  //Run to build "O" (i=3) p:3=3  || (2) i=2,3   ||(1) 1-3
-                System.out.print("* ");
-                z++;
+            for (int z = i; z <= n; z++){  //Run to build  (i=3) p: 3<=3  || (i=2) p: 2<=3   ||(i=1) 1<=3
+                System.out.print("* ");     //                 print: * || print: * *      || print: * * * 
             }
             System.out.println();// new line
         }
