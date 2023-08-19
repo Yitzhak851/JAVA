@@ -10,30 +10,31 @@
 // 17
 // 19
 
+// Then, using the previous function, 
+// write a program that prints all the prime numbers 
+// between 2 and an integer number (which is given as a command line argument).
+
 public class Assignment323 {
     public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);// get args from the user >> 
+        int n = Integer.parseInt(args[0]);// get args from the user >>
         oddOrNot1(n); // method that return (true == prime) or (false == otherwise)
-        System.out.println(printOddNum(n)); // print founction that give value from 2 >> n
+        for (int i = 2; i <= n; i++) { // calc all the num:for:  1 --> n
+            if (oddOrNot1(i) == true) {
+                System.out.println(i);
+            } else {
+                System.out.print("");
+            }
+        }
     }
-
     public static boolean oddOrNot1(int x) { // method that return true||false >> oddOrNot1(20);
         boolean t = true;
         boolean f = false;
-        if ( x%2 != 0) { // 21%2 != 0 (1)
+        if (x == 2 || x==3) {
             return t;
-        } else {  // (20)%2==0
-            return f;
-        }
-    }
-
-    public static boolean printOddNum(boolean y) {
-        if (oddOrNot1(y)) {// print all the prime num from 1-n
-            for (int i = 1; i <= y; i++) { // calc all the num
-                System.out.println(i);
-            }
+        } else if (x % 2 != 0 && x%3!=0) {    
+            return t;    
         } else {
-            System.out.println("Please insert odd num! ");//
+            return f;
         }
     }
 }
