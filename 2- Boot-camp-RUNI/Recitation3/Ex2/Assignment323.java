@@ -18,7 +18,7 @@ public class Assignment323 {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);// get args from the user >>
         oddOrNot1(n); // method that return (true == prime) or (false == otherwise)
-        for (int i = 2; i <= n; i++) { // calc all the num:for:  1 --> n
+        for (int i = 1; i <= n; i++) { // calc all the num:for:  1 --> n
             if (oddOrNot1(i) == true) {
                 System.out.println(i);
             } else {
@@ -29,11 +29,11 @@ public class Assignment323 {
     public static boolean oddOrNot1(int x) { // method that return true||false >> oddOrNot1(20);
         boolean t = true;
         boolean f = false;
-        if (x == 2 || x==3) {
+        if ( x == 2 || x==3 || x==5 || x==7) {
             return t;
-        } else if (x % 2 != 0 && x%3!=0) {    
-            return t;    
-        } else {
+        } else if (x!=1 && (x%2!=0 && x%3!=0 && x%5!=0 && x%7!=0)) {    
+            return t;       
+        } else{
             return f;
         }
     }
