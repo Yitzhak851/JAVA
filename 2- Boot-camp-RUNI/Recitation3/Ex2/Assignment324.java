@@ -9,7 +9,7 @@
 
 public class Assignment324 {
     public static void main(String[] args) {    //main methot >> void >> recived to the user output
-        String n = args[index];// get args[index] from the user >>
+        String n = args[i];// get args[index] from the user >>
         //call method that counting the num from " " to " "
         declarate value that count the sum words;
         System.out.println("Number of words in the string: " + method); //call method that print the num of words
@@ -21,5 +21,6 @@ public class Assignment324 {
     //method which get input String and recieved outputs (int) representing the numOfWords("hi how are you") in the given string. 
     public static int stringToNum (int a){
         //
+        
     }
 }
