@@ -11,13 +11,24 @@ Use a method called isPrefectNumber(…) in your program. The method should rece
 
 
 <!-- Assignment 2 -->
-The Fibonacci sequence is a sequence of integers where every number after the first two is the sum of the two preceding ones: 
+<!-- The Fibonacci sequence is a sequence of integers where every number after the first two is the sum of the two preceding ones: 
 	1, 1, 2, 3, 5, 8, 13, 21, …
 Write a Java program that receives a number as an input and prints the Fibonacci sequence, stopping when the current number in the sequence is larger than the given input. 
 For example, for n=50:
+// For example, for n=50:
+// >>run Assignment332 50
+// 1
+// 1
+// 2
+// 3
+// 5
+// 8
+// 13
+// 21
+// 34 -->
  
 <!-- Assignment 3 -->
-Write a method that receives an integer i representing an index and returns the i^th item in the Fibonacci sequence. Note that the first index is 0 and not 1.
+<!-- Write a method that receives an integer i representing an index and returns the i^th item in the Fibonacci sequence. Note that the first index is 0 and not 1. -->
 
 <!-- Assignment 4 (BONUS) -->
 A palindrome is a a word, phrase, or sequence that reads the same backward as forward. For example, “racecar” and “nurses run” are palindromes but “house” is not. 

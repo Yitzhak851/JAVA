@@ -1,5 +1,6 @@
 Conclusion
-Assignment 1
+
+<!-- Assignment 1 -->
 Write a function that accepts 2 integer arrays. The function will return a new array of type int,
 containing all the numbers which are present in both input arrays. That is, we return the
 intersection of the two arrays.
@@ -16,7 +17,8 @@ Example: (For array1={1, 2, 3} and array2={2, 3, 4})
 java AssignmentOne
 2
 3
-Assignment 2
+
+<!-- Assignment 2 -->
 Write a function that accepts 2 integer arrays. The function will return a new array of type int
 containing all the numbers which were present in either input arrays. That is, we return the
 union of the two arrays.
@@ -30,7 +32,7 @@ Hint: Write a helper function isDuplicate that receives as arguments an array an
 number and returns true if the number is already an element in the given array, and false
 otherwise.
 
-Assignment 3 (BONUS)
+<!-- Assignment 3 (BONUS) -->
 Given an array of n integers, find the number with the highest value and put it in the first cell of
 the array, the second highest number in the second cell, …, the lowest number in the last cell.
 In other words, sort the array.
