@@ -6,18 +6,18 @@ public class Assignment324 {
     }
     public static int countWords(String str) {
         int count = 0;                          //count=num of words
-        boolean endOfWord = false;              //
+        boolean insideWord = false;              //
         for (int i=0; i<str.length(); i++) {    // i=0, o<9 || 1<9 ||... 6<9                 || 9<9
             if (str.charAt(i) == ' '){          //     true ||true ||...if==true >>          || 
-                if (endOfWord) {                //          ||     ||
+                if (insideWord) {                //          ||     ||
                     count++;                    //          ||     ||
-                    endOfWord = false;          //          ||     ||
+                    insideWord = false;          //          ||     ||
                 }                               //          ||     ||...if==true >> count==1 || 
             }else{                              //          ||     ||
-                endOfWord = true;               //          ||     ||
+                insideWord = true;               //          ||     ||
             }                                   //          ||     ||
         }                                       //          ||     ||
-        if (endOfWord) {                        //          ||     ||
+        if (insideWord) {                        //          ||     ||
             count++;                            //          ||     ||
         }                                       //          ||     || count==2
         return count;
