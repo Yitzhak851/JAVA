@@ -14,7 +14,6 @@ Use a method called isPrefectNumber(…) in your program. The method should rece
 The Fibonacci sequence is a sequence of integers where every number after the first two is the sum of the two preceding ones: 
 	1, 1, 2, 3, 5, 8, 13, 21, …
 Write a Java program that receives a number as an input and prints the Fibonacci sequence, stopping when the current number in the sequence is larger than the given input. 
-
 For example, for n=50:
  
 <!-- Assignment 3 -->

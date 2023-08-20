@@ -1,4 +1,8 @@
-class test {
+// Write a method that receives an integer i 
+// representing an index and returns the i^th item in the Fibonacci sequence. 
+// Note that the first index is 0 and not 1.
+
+public class Assignment333 {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int previous = 0;
@@ -11,11 +15,3 @@ class test {
         }
     }
 }
-
-// >>run test 5
-// 1 || i=0
-// 1 || i=1
-// 2 || i=2
-// 3 || i=3
-// 5 || i=4
-
