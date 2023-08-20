@@ -1,24 +1,27 @@
-// >> java Assignment5 “The quick brown"
-// Number of words in the string: 3
-
 public class Assignment324 {
-    public static void main(String[] args) {    //main methot >> void >> recived to the user output
-            int index = 0;
-            int sum = 0;
-            do {                                    //        i=1           ||      i=2 
-                System.out.print(args[index]);      // args[0] print: The   || args[1] print: quick
-                index++;                            // args[1]              || args[2] 
-                sum += index;                       // sum = 0              || sum = 1
-            } while (index >= 0);                   // while >> 
-            
-        // get args[index] from the user >>
-        //call method that counting the num from " " to " "
-        //call method that print the num of words
+    public static void main(String[] args) {
+        String input = args[0];                     // get ("hello_you")  from the user into String name 'input'
+        int wordCount = countWords(input);          // create int box name 'countWord' = founction count words
+        System.out.println("Number of words in the string: " + wordCount);
     }
-    // public static int numOfWords(int b){ }//str.charAt(i) == ‘ ‘     //create method that counting the num from " " to " "
-    // public static int stringToNum (int a){ }   //method which get input String and recieved outputs (int) representing the numOfWords("hi how are you") in the given string. 
+    public static int countWords(String str) {
+        int count = 0;                          //count=num of words
+        boolean endOfWord = false;              //
+        for (int i=0; i<str.length(); i++) {    // i=0, o<9 || 1<9 ||... 6<9                 || 9<9
+            if (str.charAt(i) == ' '){          //     true ||true ||...if==true >>          || 
+                if (endOfWord) {                //          ||     ||
+                    count++;                    //          ||     ||
+                    endOfWord = false;          //          ||     ||
+                }                               //          ||     ||...if==true >> count==1 || 
+            }else{                              //          ||     ||
+                endOfWord = true;               //          ||     ||
+            }                                   //          ||     ||
+        }                                       //          ||     ||
+        if (endOfWord) {                        //          ||     ||
+            count++;                            //          ||     ||
+        }                                       //          ||     || count==2
+        return count;
+    }
 }   
-
-
-
-
+// str.length: "hello_you"
+//              123456789
