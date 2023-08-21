@@ -58,6 +58,5 @@ Use (str.charAt(i) == ‘ ‘) to check if the character at the "i" in the strin
 Note: Assume that the last word is not followed by a space. 
 
 Example:
->> run 
-java Assignment 5 “The quick brown fox jumps over the lazy dog”
+>> run java Assignment 5 “The quick brown fox jumps over the lazy dog”
 Number of words in the string: 9 -->

@@ -1,6 +1,6 @@
 public class Assignment324 {
     public static void main(String[] args) {
-        String input = args[0];                     // get ("hello_you")  from the user into String name 'input'
+        String input = args[0];                     // get ("hello")  from the user into String name 'input'
         int wordCount = countWords(input);          // create int box name 'countWord' = founction count words
         System.out.println("Number of words in the string: " + wordCount);
     }
@@ -16,7 +16,8 @@ public class Assignment324 {
             }else{                              //          ||     ||
                 insideWord = true;               //          ||     ||
             }                                   //          ||     ||
-        }                                       //          ||     ||
+        }
+
         if (insideWord) {                        //          ||     ||
             count++;                            //          ||     ||
         }                                       //          ||     || count==2
