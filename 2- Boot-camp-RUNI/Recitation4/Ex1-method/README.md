@@ -1,6 +1,6 @@
 Methods methods, arguments, return values
 <!-- Assignment 1 -->
-Write a program that makes animal sounds.
+<!-- Write a program that makes animal sounds.
 We have 4 types of animals: cow (1), dog (2), sheep (3), and crocodile (4).
 The main() method, receive as an argument the animal (1-4), 
 and print out its sound as
@@ -12,7 +12,7 @@ Running examples:
 >> run Assignment1 dog
 The dog goes woof
 >> run Assignment1 pikachu
-Sorry, we don't have that animal in stock.
+Sorry, we don't have that animal in stock. -->
 
 <!-- Assignment 2 -->
 Write a program that greets the user according to the current time of day.
