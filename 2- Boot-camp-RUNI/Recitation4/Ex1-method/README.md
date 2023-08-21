@@ -15,7 +15,7 @@ The dog goes woof
 Sorry, we don't have that animal in stock. -->
 
 <!-- Assignment 2 -->
-Write a program that greets the user according to the current time of day.
+<!-- Write a program that greets the user according to the current time of day.
 The main() method receives two arguments via the command-line: (1) the name of the user
 and (2) the current hour of the day, in 24 hour format (e.g., 18 means 18:00)
 The method should print out a corresponding greeting. The printing should be done in a
@@ -35,7 +35,7 @@ Running examples:
 run AssignmentTwo Daniel 8
 Good Morning, Daniel!
 run AssignmentTwo Bilbo 42
-There is no such time, Bilbo!
+There is no such time, Bilbo! -->
 
 <!-- Assignment 3 -->
 Write a program that counts the amount of numbers between 10 (inclusive) and 100 (exclusive)
