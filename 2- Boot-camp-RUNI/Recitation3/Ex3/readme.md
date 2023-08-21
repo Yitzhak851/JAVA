@@ -31,7 +31,7 @@ For example, for n=50:
 <!-- Write a method that receives an integer i representing an index and returns the i^th item in the Fibonacci sequence. Note that the first index is 0 and not 1. -->
 
 <!-- Assignment 4 (BONUS) -->
-A palindrome is a a word, phrase, or sequence that reads the same backward as forward. For example, “racecar” and “nurses run” are palindromes but “house” is not. 
+<!-- A palindrome is a a word, phrase, or sequence that reads the same backward as forward. For example, “racecar” and “nurses run” are palindromes but “house” is not. 
 For simplicity, we will only consider strings of a single word (i.e., you do not need to consider cases such as “nurses run”).
 
 Write a Java program that receives as a command-line argument a single string representing a word and returns true if the word is a palindrome and false otherwise. 
@@ -42,4 +42,4 @@ Example:
 > java Assignment5 racecar 
 String racecar is a palindrome
 > java Assignment5 house
-String house is not a palindrome
+String house is not a palindrome -->
