@@ -2,7 +2,6 @@
  * Converts between Celsius and Farenheit temperature
  */
 class CelsiusFarenheitConverter {
-  
   /*
    * Celsius -> Farenheit conversion
    * 
