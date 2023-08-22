@@ -8,6 +8,8 @@
  * 4- **
  * 5- *
  */
+package done;
+
 public class DrawTriangle {
 	public static void main(String[] args) {
 		int h = Integer.parseInt(args[0]);

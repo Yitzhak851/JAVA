@@ -9,10 +9,18 @@
 // 16
 
 public class Assignment413 {
-    public static int countNumbers() {
-        
+    public static int countNumbers(int a) {
+        int count=0;
+        for(int i=10; i<100; i++){
+            if(((i/10)+(i%10))==7 || ((i/10)+(i%10))==9){
+                count++;
+            }
+        }
+        return count;
     }
+
     public static void main(String[] args) {
-        
+        int x = 1;
+        System.out.println(countNumbers(x));
     }
 }
