@@ -1,20 +1,22 @@
-// Write a program that generates 2 random integers within a defined range [n, m] where n ≠ m.
-// For simplicity, assume 1 ≤ $ < & ≤ 9.
-// For example, for n = 3, m = 8, the random integer can be one of {3, 4, 5, 6, 7, 8}.
-// Write a method called randomWithRange(…). The method receives two arguments, the min and
-// max values of the range, and returns a random number within that range (i.e., between [n, m]).
-// Note: You can use Math.random(), which returns a double in the range of 0.0 and 1.0.
-
-
-public class Assignment421{
-    public static int randomWithRange(int x, int y) {
-        int rand=1;
+public class Assignment421{   // program that generates 2 random integers within a defined range [n, m] where n ≠ m.
+    public static int randomWithRange(int x, int y) { //receives 2 arguments, min and max values of the range
+        int min=x;      //x=3
+        int max=y;      //x=8
+        int rand= (int)(Math.random()*(max+1));     // 0-8
+        while(rand<min){
+            rand= (int)(Math.random()*(max+1));
+        }
         return rand;
+        //returns a random number within that range
     }
     public static void main(String[] args) {
-        int a =Integer.parseInt(args[0]);
-        int b =Integer.parseInt(args[1]);
-
-        randomWithRange(a,b);
+        int n =Integer.parseInt(args[0]);       //get 3
+        int m =Integer.parseInt(args[1]);       //get 8
+        //
+        System.out.println("Result is: "+ randomWithRange(n,m));
+        
     }
 }
+
+// >>run java Assignment421 3 8
+// result is: 5
