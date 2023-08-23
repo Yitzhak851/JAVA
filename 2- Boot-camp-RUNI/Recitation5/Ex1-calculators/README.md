@@ -1,14 +1,15 @@
-Calculator
+<!-- Calculator
 In this exercise we are going to write a simple calculator. All assignments are a continuation
-of the previous ones, so don’t delete the code you’ve written.
+of the previous ones, so don’t delete the code you’ve written. -->
 
 <!-- Assignment 1 -->
-Write 4 functions that each take 2 string arguments and does a mathematical operation on
+<!-- Write 4 functions that each take 2 string arguments
+and does a mathematical operation on
 them:
 a. public static double add(double num1, double num2)
 b. public static double subtract(double num1, double num2)
 c. public static double multiple (double num1, double num2)
-d. public static double divide(double num1, double num2)
+d. public static double divide(double num1, double num2) -->
 
 <!-- Assignment 2 -->
 Write a function
