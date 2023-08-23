@@ -1,6 +1,6 @@
 <!-- CelsiusFarenheitConverter.java --> - V
 
-<!-- MonthConverter.java -->
+<!-- MonthConverter.java --> - V
 
 <!-- // “<data type>[] <array’s name> = new <data type> [<array’s length>]”
 //  int[] integerArray = new int [5];             >> Creates an integer array of length 5
