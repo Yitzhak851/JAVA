@@ -8,13 +8,13 @@ max values of the range, and returns a random number within that range (i.e., be
 Note: You can use Math.random(), which returns a double in the range of 0.0 and 1.0. -->
 
 <!-- Assignment 2 -->
-Write a program that emulates two random dice rolls. 
+<!-- Write a program that emulates two random dice rolls. 
 The program should print the results in the
 following form:
 where X and Y should both be random numbers in the range of 1-6 where X should be bigger
 than Y.
 Restriction: use a function from the Math library to determine which of the two numbers is X.
-In case the roll dices are the same, additionally print: “Double Up!”
+In case the roll dices are the same, additionally print: “Double Up!” -->
 
 <!-- Assignment 3 -->
 Write a Java program to calculate the distance between any two points on a plane. The points
