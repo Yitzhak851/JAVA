@@ -1,13 +1,13 @@
 Arrays Declarations, iterations, simple operations…
 <!-- Assignment 1 -->
-Write a program which iterates an integer array and returns the maximum element in that array.
+<!-- Write a program which iterates an integer array and returns the maximum element in that array.
 Fill in the values in the array at declaration (e.g., int[] arr = {1, 2, 3})
 In addition, print each number of the array followed by the maximum element in the form shown
 in the example below.
 Example Output:
 The numbers are:
 7, 15, 3, 6, 99, 64
-The maximum is: 99
+The maximum is: 99 -->
 
 <!-- Assignment 2 -->
 Write a program that takes an integer num and creates an array of size num in which each
