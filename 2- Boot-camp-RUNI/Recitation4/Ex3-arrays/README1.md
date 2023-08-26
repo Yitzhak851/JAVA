@@ -26,7 +26,7 @@ The factorials are:
 
 
 <!-- Assignment 3 -->
-Write a program that receives two arguments: an integer ‘num’ and an array.
+<!-- Write a program that receives two arguments: an integer ‘num’ and an array.
 The program prints all the number pairs whose sum equals to ‘num’.
 For example:
 • if num=5 and array={1,2,3,4,5,6} then the program will print: (1, 4) (2, 3).
@@ -34,17 +34,24 @@ For example:
 • if num=1 and array={1,2,3,4,5,6} then the program will print “no pairs”.
 Clarification: the user should declare the variable num and array to values of his/her choice in
 the main. That is, the variables should not be passed as command line arguments.
-Note: If no such pairs exist, print “no pairs”
+Note: If no such pairs exist, print “no pairs” -->
 
 
 <!-- Assignment 4 -->
-Write a program that receives as input an integer n and creates an array of size n which
+<!-- Write a program that receives as input an integer n and creates an array of size n which
 consists of the first n Fibonacci numbers.
 For example, for n=6 the program creates the array {1, 1, 2, 3, 5, 8} and then prints each
 element in the array on a separate line.
 Note: You may assume n >= 2.
 Example output (for n=6):
-Assignment 5
+1
+1
+2
+3
+5
+8 -->
+
+<!-- Assignment 5 -->
 Write a program which takes as input a 1-dimensional array and prints the multiplication table of
 that array.
 Hint: use '\t' to print a tab
