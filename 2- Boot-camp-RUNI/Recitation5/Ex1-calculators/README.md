@@ -12,12 +12,12 @@ c. public static double multiple (double num1, double num2)
 d. public static double divide(double num1, double num2) -->
 
 <!-- Assignment 2 -->
-Write a function
+<!-- Write a function
 public static double doOperation(double num1, String op, double num2)
 that applies the given operation on the two given numbers using the functions you’ve written in
 Assignment 1.
 For example, calling: doOperation(5.0, “+”, 2.0) will apply the add function you wrote
-in Assignment 1 and will return 7.0
+in Assignment 1 and will return 7.0 -->
 
 <!-- Assignment 3 -->
 Write a main function that receives at least three command-line arguments representing an
