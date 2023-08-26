@@ -1,4 +1,3 @@
-
 public class Assignment431 {
     public static int returnMax(int[] array) {      // [1,2,3]
         int res=0;
@@ -8,7 +7,6 @@ public class Assignment431 {
             } else {
                 return res;
             }
-            
         }
         return res;
     }
