@@ -10,7 +10,7 @@ The numbers are:
 The maximum is: 99 -->
 
 <!-- Assignment 2 -->
-Write a program that takes an integer num and creates an array of size num in which each
+<!-- Write a program that takes an integer num and creates an array of size num in which each
 element is equal to the factorial of its position.
 For example, for num=6 the program creates the array:
 {1, 1, 2, 6, 24, 120}.
@@ -22,7 +22,7 @@ The factorials are:
 2! = 2
 3! = 6
 4! = 24
-5! = 120
+5! = 120 -->
 
 
 <!-- Assignment 3 -->
