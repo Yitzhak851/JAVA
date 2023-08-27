@@ -6,10 +6,9 @@ public class Test {
             System.out.println("Usage: java Calculator num1 op num2 [op num3 ...]");
             return;
         }
-
         double result = Double.parseDouble(args[0]);
         String operator = null;
-
+        
         for (int i = 1; i < args.length; i++) {
             if (args[i].equals("+") || args[i].equals("-") || args[i].equals("*") || args[i].equals("/")) {
                 operator = args[i];
