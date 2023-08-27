@@ -29,21 +29,29 @@ public class Assignment513 {
         return res;
     }
     public static void main(String[] args) {
-        String[] arr = new String[args.length];
-
-        String[] arrayOfOperators = new String[(int)(((args.length)-1)/2)];
-        double[] arrayOfNum = new double[(int)(((args.length)/2)+1)];
-        
-        arrayOfOperators = {arr[i+1],arr[i+3], arr[i+5], ..... };
-        arrayOfNum = {arr[i+2], arr[i+4], arr[i+6]...... };
-
-        for(int i=0; i<arrayOfNum.length; i++){
-            doOperation(arrayOfNum[i], null, arrayOfNum[i+1])
-
+        boolean b=false;
+        double current;
+        double previus;
+        double count=0;
+        for(int i=0; i<args.length; i++){   // 5 + 3        //args.length=3  i=0, i<3
+            if(args.length>=3){
+                if(i==0 || i%2==0){                             //
+                count++;
+                if(b==true){
+                    previus = Double.parseDouble(args[i]);
+                }else{
+                    current = Double.parseDouble(args[i]);
+                    count += current;
+                }
+            }else if (i==1 || i%2!=0){
+                String op = args[i];
+                b=true;
+            } else {
+                System.out.println("invalid algebraic expression, plese insert algebraic expression greader then 3!");
+            }
+            }
         }
-
-
-
+        count = doOperation(count, op, previus);
+        System.out.println(count);
     }
 }
-
