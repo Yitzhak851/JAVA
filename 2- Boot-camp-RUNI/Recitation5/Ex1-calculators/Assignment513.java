@@ -1,16 +1,16 @@
 public class Assignment513 {
     public static double doOperation(double num1, String op, double num2) {
-        double a = 0;
         if (op == "+") {
-            System.out.println(add(num1, num2));
+            return add(num1, num2);
         } else if (op == "-") {
-            System.out.println(subtract(num1, num2));
+            return subtract(num1, num2);
         } else if (op == "*") {
-            System.out.println(multiple(num1, num2));
+            return multiple(num1, num2);
         } else if (op == "/") {
-            System.out.println(divide(num1, num2));
-        }
-        return a;
+            return divide(num1, num2);
+        } else if (op != ( "/" || "*" || "+" || "-")  ){
+            return -1.0;
+        }        
     }
 
     public static double add(double num1, double num2) {
@@ -34,15 +34,16 @@ public class Assignment513 {
     }
 
     public static void main(String[] args) { // create String[] args
-        double result = Double.parseDouble(args[0]);        // 5 || 5+5 || 5+5*3
+        double result = Double.parseDouble(args[0]);        //   5+5*3
         String op = null;
-        if (args.length >= 3 || (args.length % 2) != 0) {
-            for (int i = 0; i < args.length; i++) { // 5 + 5 * 3 //args.length=5 (i=0, i<5)
+        if (args.length >= 3 && (args.length % 2) != 0) {
+            for (int i=1; i < args.length; i++) { // 5 + 5 * 3 //args.length=5 (i=0, i<5)
                 if (i % 2 == 0) {                   //5, 5, 3
-                    double num = Double.parseDouble(args[i]);
+                    double num = Double.parseDouble(args[i]);       //num=5.0  num= 3.0  result=5.0
                     if (op != null) {
-                        result = doOperation(result, op, num);
-                        System.out.println("the result is: " + result);
+                        double temp;
+                        temp = doOperation(result, op, num);
+                        System.out.println("The result is: " + temp);
                     }
                     op = null;
                 } else {

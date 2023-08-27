@@ -1,5 +1,3 @@
-// package 2- Boot-camp-RUNI.Recitation5.Ex1-calculators;
-
 public class Test {
     public static void main(String[] args) {
         if (args.length < 3) {
