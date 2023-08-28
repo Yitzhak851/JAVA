@@ -14,10 +14,10 @@ For example, for the input "156445", the method prints false.
 Bonus: write the main function in one line! -->
 
 <!-- Assignment 2 -->
-A deck of cards consists of four suits - "Clubs", "Diamonds", "Hearts" and "Spades", as well as 13 types
+<!-- A deck of cards consists of four suits - "Clubs", "Diamonds", "Hearts" and "Spades", as well as 13 types
 of cards: all numbers 2 – 10, "Jack", "Queen", "King", and "Ace"
 Write a main function that randomly draws two cards and displays them to the user.
 Example output
 >>Run Assignmenttwo
 6 of spades
-Ace of Hearts
+Ace of Hearts -->
