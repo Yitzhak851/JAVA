@@ -33,7 +33,7 @@ number and returns true if the number is already an element in the given array, 
 otherwise. -->
 
 <!-- Assignment 3 (BONUS) -->
-Given an array of n integers, find the number with the highest value and put it in the first cell of
+<!-- Given an array of n integers, find the number with the highest value and put it in the first cell of
 the array, the second highest number in the second cell, …, the lowest number in the last cell.
 In other words, sort the array.
 Clarification: the array should be declared and initialized in your main function
@@ -45,4 +45,4 @@ java Assignment3
 5
 3
 2
-1
+1 -->

@@ -29,7 +29,7 @@ public class Assignment533 {
 	}
 
     public static void main(String[] args) {
-        int[] arr = {4,2,1,3};
+        int[] arr = {1, 6, 3, 9, 5, 2, 10};
         int[] sortArr = sortArray(arr);
         for(int i=0; i<sortArr.length; i++){
             System.out.println(sortArr[i]);
