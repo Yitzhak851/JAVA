@@ -8,7 +8,7 @@ public class Assignment513 {
             return multiple(num1, num2);
         } else if (op == "/") {
             return divide(num1, num2);
-        } else if (op != ( "/" || "*" || "+" || "-")  ){
+        } else {
             return -1.0;
         }        
     }

@@ -11,8 +11,7 @@ public class test {
         return res;
     }
     public static void main(String[] args) {
-        //int number = Integer.parseInt(args[0]);  //get 1234
-        int number=1234;
+        int number = Integer.parseInt(args[0]);  //get 1234
         int[] arr = getDigits(number);        // use method getDigits to conver number to aray
         for(int i=0; i<arr.length; i++){
             System.out.print(arr[i]);
