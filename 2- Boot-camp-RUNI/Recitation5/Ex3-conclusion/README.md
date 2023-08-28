@@ -1,7 +1,7 @@
 Conclusion
 
 <!-- Assignment 1 -->
-Write a function that accepts 2 integer arrays. The function will return a new array of type int,
+<!-- Write a function that accepts 2 integer arrays. The function will return a new array of type int,
 containing all the numbers which are present in both input arrays. That is, we return the
 intersection of the two arrays.
 Then, in your main you should call this function you wrote to print the intersection elements of
@@ -16,10 +16,10 @@ zeroes are allowed.
 Example: (For array1={1, 2, 3} and array2={2, 3, 4})
 java AssignmentOne
 2
-3
+3 -->
 
 <!-- Assignment 2 -->
-Write a function that accepts 2 integer arrays. The function will return a new array of type int
+<!-- Write a function that accepts 2 integer arrays. The function will return a new array of type int
 containing all the numbers which were present in either input arrays. That is, we return the
 union of the two arrays.
 Then, in your main you should call this function you wrote to print the union elements of the
@@ -30,7 +30,7 @@ Note: The order if the items in the returned array does not matter.
 Note: Every number should appear at most once! (No duplicates allowed!)
 Hint: Write a helper function isDuplicate that receives as arguments an array and an integer
 number and returns true if the number is already an element in the given array, and false
-otherwise.
+otherwise. -->
 
 <!-- Assignment 3 (BONUS) -->
 Given an array of n integers, find the number with the highest value and put it in the first cell of
