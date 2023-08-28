@@ -22,11 +22,11 @@ public class Assignment521 {
         return b;
     }
     public static void main(String[] args) {
-        int number = Integer.parseInt(args[0]);  //For example: getDigits(754368) returns [8,6,3,4,5,7].
+        int number = Integer.parseInt(args[0]);
         if(args.length != 6){
             System.out.println("Plese put as input a 6-digit number!! ");
         }
-        int[] arr = getDigits(number);        // use method getDigits to conver number to aray
+        int[] arr = getDigits(number);
         System.out.print("Your array is: [");
         for(int i=0; i<arr.length; i++){
             System.out.print(" "+ arr[i]);
