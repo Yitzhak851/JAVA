@@ -17,16 +17,21 @@ public class Assignment521 {
             length++;
         }
         int[] arr = new int[length];
-        for(int i=input; i>1; i=i/10){
-            int num =1;
-            arr[i]=num;
+        for(int i=0; i<input; i++){
+            for(int j=length; j>=1; j++){
+                int multi = (j-1);
+                int number = 1;
+                for(int k = multi; k>1; k--){
+                    number *= 10;
+                }
+                arr[i] = input/number;
+            }
         }
         return arr;
     }
     public static void main(String[] args) {
         int input = Integer.parseInt(args[0]);
 
-        args.charAt[]
         if(args.length != 6){
             System.out.println("Plese put as input a 6-digit number!! ");
         }
