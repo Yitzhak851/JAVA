@@ -11,37 +11,17 @@ public class Assignment521 {
         return res;
     }
     public static boolean isPalindrome(int[] arr) {
-        boolean b = false;
+        boolean palindromeWord=true;
         for(int i=0; i<arr.length; i++){
-            for(int j=arr.length; j>0; j--){
-                if(arr[i]==arr[(j)-(i)-(1)]){
-                    b= true;
-                }
+            if(arr[i] != arr[arr.length-(i)-(1)]){
+                palindromeWord=false;
             }
         }
-        return b;
+        return palindromeWord;
     }
     public static void main(String[] args) {
-        int number = Integer.parseInt(args[0]);
-        if(args.length != 6){
-            System.out.println("Plese put as input a 6-digit number!! ");
-        }
-        int[] arr = getDigits(number);
-        System.out.print("Your array is: [");
-        for(int i=0; i<arr.length; i++){
-            System.out.print(" "+ arr[i]);
-        }
-        System.out.print(" ]");
-        System.out.println(isPalindrome(getDigits(number)));
+        System.out.println(isPalindrome((getDigits(Integer.parseInt(args[0])))));
     }
 }
 
-
-// Write a main function that receives as input a 6-digit number as a command-line argument and prints
-// true if it is a palindrome, and false otherwise.
-
-// For example, for the input "156445", the method prints false.
-
-// Bonus: write the main function in one line!
-// System.out.println(isPalindrome(getDigits(int number = Integer.parseInt(args[0]))));
 
