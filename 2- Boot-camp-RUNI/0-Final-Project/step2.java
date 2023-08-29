@@ -5,9 +5,7 @@ public class Step2 {
         for(int i=0; i<updateGrid.length; i++){
             for(int j=0; j<updateGrid[0].length; j++){
                 if(j==0){
-                    if(updateGrid[i][j]==(-1)){
                     updateGrid[i][(j+1)]=1;
-                    }
                 } else if (j>0 && j<updateGrid[0].length) {
                     if(updateGrid[i][j]==(-1)){
                     updateGrid[i][(j-1)]=1;

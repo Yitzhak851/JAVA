@@ -4,8 +4,8 @@ public class Assignment521 {
         int[] res = new int[length];
         int i=0;
         while(number>0){
-            res[i]=number%10;
-            number/=10;
+            res[i]=number%10;   //1234%10 --> 4     || 123%10 -->3    || 12%10 --> 2    ||  1%10--> 1
+            number/=10;         //1234/10 --> 123   || 123/10 -->12   || 12/10 --> 1    ||  1/10--> 1
             i++;
         }
         return res;

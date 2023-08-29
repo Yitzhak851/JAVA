@@ -1,6 +1,7 @@
 Arrays
 <!-- Assignment 1 -->
-<!-- Write a function getDigits that receives a number as input and returns an array of its digits in the correct
+<!-- Write a function getDigits 
+that receives a number as input and returns an array of its digits in the correct
 order, from ones to tens to hundreds, etc.
 For example: getDigits(754368) returns [8,6,3,4,5,7].
 Note: index 0 is for the right most digit.
