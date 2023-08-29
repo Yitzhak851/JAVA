@@ -14,24 +14,23 @@ public class Step1 {
 	}
     	// Receives a grid, and prints it
 	public static void displayGrid(int[][] mineGreed) {
-		for (int row = 0; row < mineGreed.length; row++) {
-			for (int j = 0; j < mineGreed[row].length; j++) {
-				if (mineGreed[row][j] == -1) {
+		for (int i = 0; i < mineGreed.length; i++) {
+			for (int j = 0; j < mineGreed[i].length; j++) {
+				if (mineGreed[i][j] == -1) {
 					System.out.print("x ");
 				} else {
-					System.out.print(mineGreed[row][j] + " ");
+					System.out.print(mineGreed[i][j] + " ");
 				}
 			}
 			System.out.println();
 		}
 	}
     public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);			// get 3
-		int m = Integer.parseInt(args[1]);			// get 5
-		double p = Double.parseDouble(args[2]);		// get 0.3
+        int n = 2; //Integer.parseInt(args[0]);			// get 3
+		int m =2; //Integer.parseInt(args[1]);			// get 5
+		double p = 0.1; //Double.parseDouble(args[2]);		// get 0.3
 		int[][] mineGreed = createGrid(n, m, p);
         displayGrid(mineGreed);
-
     }
 }
 
