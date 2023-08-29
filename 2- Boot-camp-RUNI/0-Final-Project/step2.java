@@ -1,6 +1,4 @@
-
 public class step2 {
-
     public static int[][] updateGrid(int [][] grid) {
         int[][] gridUpdate = grid;
 
@@ -17,11 +15,11 @@ public class step2 {
     // receives the size of the grid nxm, and the probabiility of a mine.
 	// creates a matching random grid
 	public static int[][] createGrid(int n, int m, double p) {
-		int[][] grid = new int[n][m];
-		for (int row = 0; row < grid.length; row++) {
-			for (int j = 0; j < grid[row].length; j++) {
+		int[][] grid = new int[n][m];                       //f.x: 10X10
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[i].length; j++) {
 				if (Math.random() < p) {
-					grid[row][j] = -1;
+					grid[i][j] = -1;
 				}
 			}
 		}

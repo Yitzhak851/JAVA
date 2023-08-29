@@ -1,14 +1,15 @@
 public class TestArray2D {
     public static void main(String[] args) {
-        int[][] exampleArray = new int[2][2];       // index:[0,0][1,0]   value: [1][2]
-        exampleArray[0][0] = 1 ;                    // index:[0,1][1,1]   value: [2][1]
-        exampleArray[1][0] = 2 ;
-        exampleArray[0][1] = 2 ;
-        exampleArray[1][1] = 1 ;
-
-        System.out.print(exampleArray[0][0]);
-        System.out.println(exampleArray[1][0]);
-        System.out.print(exampleArray[0][1]);
-        System.out.println(exampleArray[1][1]);
+        int n=5;
+        int m=5;
+        
+        int[][] grid = new int[n][m];
+        
+        for (int i= 0; i < grid.length; i++) {    
+			for (int j = 0; j < grid[i].length; j++) {
+                System.out.print(grid[i][j]=i);
+			}
+            System.out.println();
+		}
     }
 }
