@@ -1,7 +1,8 @@
+package StepByStep;
 
 public class Step3 {
     public static int coordinate(int a, int b, int[][] arr) {
-        int res = arr[b][a];
+        int res = arr[a][b];
         return res;
     }
     public static void main(String[] args) {
@@ -27,3 +28,4 @@ public class Step3 {
 // 3
 //>> run Step3 1 2
 // -1
+

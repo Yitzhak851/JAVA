@@ -1,3 +1,4 @@
+package StepByStep;
 public class Step2 {
     //receives grid with mines, changes every 0 to the number of adjacent mines, and returns it.
     public static int[][] checkMine (int[][] inputArray) {
