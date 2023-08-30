@@ -1,23 +1,29 @@
 public class Step2 {
     //receives grid with mines, changes every 0 to the number of adjacent mines, and returns it.
-    public static int[][] updateGrid(int [][] grid) {
-        int[][] updateGrid = grid;
-        for(int i=0; i<updateGrid.length; i++){
-            for(int j=0; j<updateGrid[0].length; j++){
-                if(j==0){
-                    updateGrid[i][(j+1)]=1;
-                } else if (j>0 && j<updateGrid[0].length) {
-                    if(updateGrid[i][j]==(-1)){
-                    updateGrid[i][(j-1)]=1;
-                    updateGrid[i][(j+1)]=1;
-                    }
-                }else{
-                    updateGrid[i][(j-1)]=1;
+    public static int[][] checkMine (int[][] inputArray) {
+        int numRows = inputArray.length;
+        int numCols = inputArray[0].length;
+        int[][] outputArray = new int[numRows][numCols];
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                if (inputArray[i][j] == -1) {
+                    outputArray[i][j] = -1; // Preserve mines
                 }
+                // count mines in the neighboring cells
+                int mineCount = 0;
+                for (int x = (i - 1); x <= (i + 1); x++) {
+                    for (int y = (j - 1); y <= (j + 1); y++) {
+                        if (x >= 0 && x < numRows && y >= 0 && y < numCols && inputArray[x][y] == -1) {
+                            mineCount++;
+                        }
+                    }
+                }
+                outputArray[i][j] = mineCount;
             }
         }
-        return updateGrid;
+        return outputArray;
     }
+
     // receives size of grid nXm, and probabiility of a mine >> creates a matching random grid.
 	public static int[][] createGrid(int n, int m, double p) {
 		int[][] grid = new int[n][m];                       //f.x: 10X10
@@ -35,12 +41,12 @@ public class Step2 {
 		for (int i = 0; i < mineGreed.length; i++) {
 			for (int j = 0; j < mineGreed[i].length; j++) {
 				if (mineGreed[i][j] == -1) {
-					System.out.print("X");
+					System.out.print("X");          //print X
 				} else {
-					System.out.print(mineGreed[i][j]);
+					System.out.print(mineGreed[i][j]);  //print "0"
 				}
 			}
-			System.out.println();
+			System.out.println();                   //print "/n"
 		}
 	}
     public static void main(String[] args) {
@@ -50,7 +56,7 @@ public class Step2 {
 		int[][] mineGreed = createGrid(n, m, p);
         displayGrid(mineGreed);  //Receives a grid, and prints it(with mines)
         System.out.println();
-        displayGrid(updateGrid(mineGreed));  //Receives a grid, and prints it(with mines)
+        displayGrid(checkMine(mineGreed));  //Receives a grid, and prints it(with mines)
         
     }
 }
