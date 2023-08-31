@@ -1,6 +1,9 @@
-import java.util.Scanner;  // Import the Scanner class
-public class FinalProject {
+import java.util.*;// Import the Scanner class
+
+public class MineSweeper {
 	public static void main(String[] args) {
+        // MineSweeper M = new MineSweeper();
+        // M.startGame();
 		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 		System.out.println("\n=============== Welcome to Minesweeper game ! ============ ");
 		System.out.println("Please enter height and width, ");
@@ -163,6 +166,20 @@ public class FinalProject {
 // Step 8: Connect everything.
 // Bonus Step – split to functions in more places that make sense – such as the user input.
 // Bonus Step – think about runtime. Are there are times you go over the entirety of a 2d grid (which takes a long time) and you don’t actually need to?
+
+	// public void startGame(){
+	// 	System.out.println("\n\n================Welcome to Minesweeper ! ================\n");
+	// 	setupField(1);
+	// 	boolean flag = true;
+	// 	while(flag){
+	// 		displayVisible();
+	// 		flag = playMove();
+	// 		if(checkWin()){
+	// 			displayHidden();
+	// 			System.out.println("\n================You WON!!!================");
+	// 			break;				}
+	// 	}
+	// }
 
 
 // Checklist before submission:
