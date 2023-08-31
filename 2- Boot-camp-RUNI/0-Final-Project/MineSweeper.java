@@ -1,55 +1,46 @@
 import java.util.*;// Import the Scanner class
 
 public class MineSweeper {
-	public static void main(String[] args) {
-        // MineSweeper M = new MineSweeper();
-        // M.startGame();
-		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-		System.out.println("\n=============== Welcome to Minesweeper game ! ============ ");
+// foo() startMesage
+	public static void startMessage() {
+		System.out.println("\n|=============== Welcome to Minesweeper game ! =============|");		
+		System.out.println("|The game is very simple! The program should asked for 2    |");
+		System.out.println("|integer coordinates (one at a time), and what to do with   |");
+		System.out.println("|the tile (0 for left-click, 1 for right click (flag).      |");
+		System.out.println("|The grid is then printed If a non-mine tile is chosen,     |");
+		System.out.println("|it is replaced with a number signifying the number of      |");
+		System.out.println("|mines adjacent to it. If a mine is clicked, the grid so far|");
+		System.out.println("|is printed, showing all unflagged mines, and the game ends!|");
+	}	
+// foo() gameInstructions
+	public static void gameInstructions() {
+		System.out.println("\n|============ Excellent! lets create your game !! ==========|\n");
 		System.out.println("Please enter height and width, ");
 		System.out.println("of the grid that you want to play ! ");
 		System.out.println("and proprty of mines you would like to play (0-1).");
-		System.out.print("Height (at integer number): "); 
-		int n = myObj.nextInt(); 
-		System.out.print("Width (at integer number): ");
-		int m = myObj.nextInt(); 
-		System.out.print("Proprty (at double number between 0-1): ");
-		double p = myObj.nextDouble(); 
-		System.out.println("\n============== Excellent! lets tell you how the game work ==============\n");
-		System.out.println("The game is very simple!");
-		System.out.println("The program should asked for 2 integer coordinates (one at a time), ");
-		System.out.println("and what to do with the tile (0 for left-click, 1 for right click (flag).");
-		System.out.println("The grid is then printed If a non-mine tile is chosen, ");
-		System.out.println("it is replaced with a number signifying the number of mines adjacent to it.");
-		System.out.println("If a mine is clicked, the grid so far is printed, showing all unflagged mines,");
-		System.out.println("and the game ends!");
-		System.out.println("\n============== Start play ! this is your grid: (good luck!) ==============\n");
-		int[][] playGreed = createGrid(n, m, p);
-		displayGrid(mapGrid(n, m)); // print the array of 9999
-
-		// while (game==true) {
-			//play
-		// }
-		//print - you lose
-
-		
-		System.out.println("\n== Please enter your move(one at a time)==");
-		System.out.println("== and what todo with the tile (0=unflag, 1=flag): ==\n");
-		System.out.print("Row (at integer number): "); 
-		int x = myObj.nextInt(); 
-		System.out.print("Coloum (at integer number): ");
-		int y = myObj.nextInt(); 
-		System.out.print("Flag or Unflag (0 for un-flag, 1 for flag): ");
-		int z = myObj.nextInt();
-
-// Step 9: displayGrid(gameMethod);
-//method: public static [][] gameMethod(x,y,z,[][]map,[][]grid){
-			//crete[][] arr
-			//
-			//return arr map+opencel
-			//if cell==-1 - boolen game= false
-			//play 
-// 		  } 
+	}
+// Step 0: Get n,m --> return displayHidenGrid 
+	public static void displayHidden(int n, int m){
+		int[][] arr = new int[n][m];
+		System.out.print("\t ");
+		for(int i=0; i<m; i++){
+			System.out.print(" " + i + "  ");
+		}
+		System.out.print("\n");
+		for(int i=0; i<m; i++){
+			System.out.print(i + "\t| ");
+			for(int j=0; j<m; j++){
+				if(arr[i][j]==0){
+					System.out.print("?");
+				}else if(arr[i][j]==100){
+					System.out.print("X");
+				}else{
+					System.out.print(arr[i][j]);
+				}
+				System.out.print(" | ");
+			}
+			System.out.print("\n");	
+		}
 	}
 // Step 1: Get n,m,p% mine --> return createGrid 
 	public static int[][] createGrid(int n, int m, double p) {
@@ -159,27 +150,61 @@ public class MineSweeper {
 		return arr;
 	}
 // Step 7: Get status and mineGrid --> returns if the game is complete.
+	public static void main(String[] args) {
+		startMessage();
+		gameInstructions();
+		
+		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		System.out.print("Height (at integer number): "); 
+		int n = myObj.nextInt(); 
+		System.out.print("Width (at integer number): ");
+		int m = myObj.nextInt(); 
+		System.out.print("Proprty (at double number between 0-1): ");
+		double p = myObj.nextDouble(); 
+
+		int[][] playGreed = createGrid(n, m, p);
+		displayHidden(n,m); 				// print the array of 0 | 0 | 
+		
+		// while (game==true) {
+			//play- 
+			//chose 0,0,0
+			//methot chekcell- 
+			//
+		// }
+		//print - you lose
+
+		//method of palying while true
+		System.out.println("\n== Please enter your move(one at a time)==");
+		System.out.println("== and what todo with the tile (0=open, 1=flag/unflag): ==\n");
+		
+		System.out.print("Row (at integer number): "); 
+		int x = myObj.nextInt(); 
+		System.out.print("Coloum (at integer number): ");
+		int y = myObj.nextInt(); 
+		System.out.print("Flag or Unflag (0 for open, 1 for flag/un-flag): ");
+		int z = myObj.nextInt();
+
+// Step 9: displayGrid(gameMethod);
+//method: public static [][] gameMethod(x,y,z,[][]map,[][]grid){
+			//crete[][] arr
+			//
+			//return arr map+opencel
+			//if cell==-1 - boolen game= false
+			//play 
+// 		  } 
+	}
 }
+
+
+
+
+
 //Step 8: Understand how to get user input for the coordinates. 
 // Write a matching function for getting user input (clicks/flags). 
 // Include handling for invalid inputs (flagging a marked tile, tile that doesn’t exist, and so on).
 // Step 8: Connect everything.
 // Bonus Step – split to functions in more places that make sense – such as the user input.
 // Bonus Step – think about runtime. Are there are times you go over the entirety of a 2d grid (which takes a long time) and you don’t actually need to?
-
-	// public void startGame(){
-	// 	System.out.println("\n\n================Welcome to Minesweeper ! ================\n");
-	// 	setupField(1);
-	// 	boolean flag = true;
-	// 	while(flag){
-	// 		displayVisible();
-	// 		flag = playMove();
-	// 		if(checkWin()){
-	// 			displayHidden();
-	// 			System.out.println("\n================You WON!!!================");
-	// 			break;				}
-	// 	}
-	// }
 
 
 // Checklist before submission:
@@ -193,3 +218,17 @@ public class MineSweeper {
 //[] Is there repeated code?
 //[] Is everything using conventions? 
 //[] This includes indentation, variable naming, variable typing, method naming, and other things I’m probably not thinking about currently.
+		// System.out.println("\n\n================Welcome to Minesweeper ! ================\n");
+        // setupField(1);
+        // boolean flag = true;
+        // while(flag){
+        //     displayVisible();
+        //     flag = playMove();
+        //     if(checkWin()){
+        //         displayHidden();
+        //         System.out.println("\n================You WON!!!================");
+        //         break;
+        //     }
+        // }
+        // MineSweeper M = new MineSweeper();
+        // M.startGame();
