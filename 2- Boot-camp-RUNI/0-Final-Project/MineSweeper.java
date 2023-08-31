@@ -1,6 +1,27 @@
 import java.util.*;// Import the Scanner class
 
 public class MineSweeper {
+//main method
+	public static void main(String[] args) {
+		startMessage();
+		gameInstructions();
+		int[][] fieldHidden = displayHidden();
+		int[][] fieldVisible =
+		int row = fieldVisible.length;
+		int col = fieldVisible[0].length;
+
+		System.out.println("\n|============ Excellent! this is your grid game !! ==========|\n");
+		
+		displayVisible(row,col);
+		int[][] fieldHidden = buildHidden(fieldVisible);
+		
+		boolean flag = true;
+        while(flag){								// while true			|| false
+            displayVisible();						//show field Visible	|| 
+            flag = playMove(row,col,fieldHidden);	//play=true				|| play=false >> print loser display hiden field
+        }
+
+	}	
 // foo() startMesage
 	public static void startMessage() {
 		System.out.println("\n|=============== Welcome to Minesweeper game ! =============|");		
@@ -19,8 +40,56 @@ public class MineSweeper {
 		System.out.println("of the grid that you want to play ! ");
 		System.out.println("and proprty of mines you would like to play (0-1).");
 	}
-// Step 0: Get n,m --> return displayHidenGrid 
-	public static void displayHidden(int n, int m){
+// foo() gameGrid
+	public static int[][] displayHidden() {
+		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		System.out.print("Height (at integer number): "); 
+		int n = myObj.nextInt(); 
+		System.out.print("Width (at integer number): ");
+		int m = myObj.nextInt(); 
+		System.out.print("Proprty (at double number between 0-1): ");
+		double p = myObj.nextDouble(); 
+		int[][] grid = createGrid(n, m, p);
+		return grid;
+	}
+// Step 1: Get n,m,p% mine --> return createGrid 
+	public static int[][] createGrid(int n, int m, double p) {
+		int[][] grid = new int[n][m]; // f.x: 10X10
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[i].length; j++) {
+				if (Math.random() < p) {
+					grid[i][j] = -1;
+				}
+			}
+		}
+		int[][] fieldHidden = setupHidden(grid);
+		return fieldHidden;
+	}
+// Step 2: Get gridMines, changes 0 to number of adjacent mines.
+	public static int[][] setupHidden(int[][] grid) {
+		int[][] fieldHidden = new int[grid.length][grid[0].length];
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[0].length; j++) {
+				if (fieldHidden[i][j] == -1) {
+					fieldHidden[i][j] = -1;
+				} else {
+					int mineCount = 0; 
+					for (int x = (i - 1); x <= (i + 1); x++) {
+						for (int y = (j - 1); y <= (j + 1); y++) {
+							if (x >= 0 && x < fieldHidden.length && y >= 0 && y < fieldHidden[0].length && grid[x][y] == -1) {
+								mineCount++;
+							}
+						}
+					}
+					fieldHidden[i][j] = mineCount;
+				}
+			}
+		}
+		return fieldHidden;
+	}
+
+	// Step 0: Get n,m --> return displayHidenGrid 
+	public static void displayVisible(int n, int m){
 		int[][] arr = new int[n][m];
 		System.out.print("\t ");
 		for(int i=0; i<m; i++){
@@ -42,18 +111,6 @@ public class MineSweeper {
 			System.out.print("\n");	
 		}
 	}
-// Step 1: Get n,m,p% mine --> return createGrid 
-	public static int[][] createGrid(int n, int m, double p) {
-		int[][] grid = new int[n][m]; // f.x: 10X10
-		for (int i = 0; i < grid.length; i++) {
-			for (int j = 0; j < grid[i].length; j++) {
-				if (Math.random() < p) {
-					grid[i][j] = -1;
-				}
-			}
-		}
-		return grid;
-	}
 // Step 1: Get grid[][] --> return print it -1=x, else=0
 	public static void displayGrid(int[][] mineGreed) {
 		for (int i = 0; i < mineGreed.length; i++) {
@@ -67,38 +124,7 @@ public class MineSweeper {
 			System.out.println(); // print "/n"
 		}
 	}
-// Step 2: Get gridMines, changes 0 to number of adjacent mines.
-	public static int[][] updateGrid(int[][] createGrid) {
-		int[][] updateGrid = new int[createGrid.length][createGrid[0].length];
-		for (int i = 0; i < createGrid.length; i++) {
-			for (int j = 0; j < createGrid[0].length; j++) {
-				if (createGrid[i][j] == -1) {
-					updateGrid[i][j] = -1; // Preserve mines
-				} else {
-					int mineCount = 0; // count mines in the neighboring cells
-					for (int x = (i - 1); x <= (i + 1); x++) {
-						for (int y = (j - 1); y <= (j + 1); y++) {
-							if (x >= 0 && x < createGrid.length && y >= 0 && y < createGrid[0].length && createGrid[x][y] == -1) {
-								mineCount++;
-							}
-						}
-					}
-					updateGrid[i][j] = mineCount;
-				}
-			}
-		}
-		return updateGrid;
-	}
-// Step 2: Get n*m sizes op grid --> returns mapGrid status (status value def = 9)
-	public static int[][] mapGrid(int n, int m) {
-		int[][] mapGrid = new int[n][m]; // f.x: 10X10
-		for (int i = 0; i < mapGrid.length; i++) {
-			for (int j = 0; j < mapGrid[i].length; j++) {
-				mapGrid[i][j] = 9;
-			}
-		}
-		return mapGrid;
-	}
+
 // Step 3: Get coordinate, and returns the value in that coordinate.
 	public static int returnVal(int a, int b) {
 		int res = 1;
@@ -149,55 +175,31 @@ public class MineSweeper {
 		//	display(changeGrid(int[][] updateGrid, int[][] mapGrid));
 		return arr;
 	}
-// Step 7: Get status and mineGrid --> returns if the game is complete.
-	public static void main(String[] args) {
-		startMessage();
-		gameInstructions();
-		
-		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-		System.out.print("Height (at integer number): "); 
-		int n = myObj.nextInt(); 
-		System.out.print("Width (at integer number): ");
-		int m = myObj.nextInt(); 
-		System.out.print("Proprty (at double number between 0-1): ");
-		double p = myObj.nextDouble(); 
-
-		int[][] playGreed = createGrid(n, m, p);
-		displayHidden(n,m); 				// print the array of 0 | 0 | 
-		
-		// while (game==true) {
-			//play- 
-			//chose 0,0,0
-			//methot chekcell- 
-			//
-		// }
-		//print - you lose
-
-		//method of palying while true
-		System.out.println("\n== Please enter your move(one at a time)==");
-		System.out.println("== and what todo with the tile (0=open, 1=flag/unflag): ==\n");
-		
-		System.out.print("Row (at integer number): "); 
-		int x = myObj.nextInt(); 
-		System.out.print("Coloum (at integer number): ");
-		int y = myObj.nextInt(); 
-		System.out.print("Flag or Unflag (0 for open, 1 for flag/un-flag): ");
-		int z = myObj.nextInt();
-
-// Step 9: displayGrid(gameMethod);
-//method: public static [][] gameMethod(x,y,z,[][]map,[][]grid){
-			//crete[][] arr
-			//
-			//return arr map+opencel
-			//if cell==-1 - boolen game= false
-			//play 
-// 		  } 
+//
+	public boolean playMove(int row, int col, int[][] fieldHidden){
+		Scanner sc= new Scanner(System.in);
+		System.out.print("\nEnter Row Number: ");
+		int i= sc.nextInt();
+		System.out.print("Enter Column Number: ");
+		int j= sc.nextInt();
+		if(i<0 || i>row || j<0 || j>col ){
+			System.out.print("\nIncorrect Input!!\n");
+			return true;
+		}
+		if(fieldHidden[i][j]==-1){
+			displayHidden();
+			System.out.print("Oops! You stepped on a mine!\n============GAME OVER============");
+			return false;
+		}else if(fieldHidden[i][j]==0){
+			fixVisible(i, j);
+		}else{
+			fixNeighbours(i, j);
+		}
+		return true;
 	}
+// Step 7: Get status and mineGrid --> returns if the game is complete.
+
 }
-
-
-
-
 
 //Step 8: Understand how to get user input for the coordinates. 
 // Write a matching function for getting user input (clicks/flags). 
@@ -218,17 +220,22 @@ public class MineSweeper {
 //[] Is there repeated code?
 //[] Is everything using conventions? 
 //[] This includes indentation, variable naming, variable typing, method naming, and other things I’m probably not thinking about currently.
-		// System.out.println("\n\n================Welcome to Minesweeper ! ================\n");
-        // setupField(1);
-        // boolean flag = true;
-        // while(flag){
-        //     displayVisible();
-        //     flag = playMove();
-        //     if(checkWin()){
-        //         displayHidden();
-        //         System.out.println("\n================You WON!!!================");
-        //         break;
-        //     }
-        // }
-        // MineSweeper M = new MineSweeper();
-        // M.startGame();
+
+// Step 2: Get n*m sizes op grid --> returns mapGrid status (status value def = 9)
+	// public static int[][] mapGrid(int n, int m) {
+	// 	int[][] mapGrid = new int[n][m]; // f.x: 10X10
+	// 	for (int i = 0; i < mapGrid.length; i++) {
+	// 		for (int j = 0; j < mapGrid[i].length; j++) {
+	// 			mapGrid[i][j] = 9;
+	// 		}
+	// 	}
+	// 	return mapGrid;
+	// }
+// Step 9: displayGrid(gameMethod);
+//method: public static [][] gameMethod(x,y,z,[][]map,[][]grid){
+			//crete[][] arr
+			//
+			//return arr map+opencel
+			//if cell==-1 - boolen game= false
+			//play 
+// 		  } 

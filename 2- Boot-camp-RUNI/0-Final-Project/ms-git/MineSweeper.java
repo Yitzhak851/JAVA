@@ -2,7 +2,7 @@ import java.util.*;
 public class MineSweeper {
     private int[][] fieldVisible = new int[10][10];
     private int[][] fieldHidden = new int[10][10];
-//display gameGrid
+
     public void displayVisible(){
         System.out.print("\t ");
         for(int i=0; i<10; i++){
@@ -24,7 +24,7 @@ public class MineSweeper {
             System.out.print("\n");
         }
     }
-//
+
     public void displayHidden(){
         System.out.print("\t ");
         for(int i=0; i<10; i++){
@@ -51,7 +51,8 @@ public class MineSweeper {
         fieldVisible[i][j] = 50;
         if(i!=0){
             fieldVisible[i-1][j] = fieldHidden[i-1][j];
-            if(fieldVisible[i-1][j]==0) fieldVisible[i-1][j] = 50;
+            if(fieldVisible[i-1][j]==0) 
+            fieldVisible[i-1][j] = 50;
             if(j!=0){
                 fieldVisible[i-1][j-1] = fieldHidden[i-1][j-1];
                 if(fieldVisible[i-1][j-1]==0) 
@@ -236,7 +237,6 @@ public class MineSweeper {
                 }
             }
         }
-        //displayHidden();
     }
 
     public void setupField(int diff){
@@ -245,7 +245,6 @@ public class MineSweeper {
             Random random = new Random();
             int i = random.nextInt(10);
             int j = random.nextInt(10);
-            //System.out.println("i: " + i + " j: " + j);
             fieldHidden[i][j] = 100;
             var++;
         }
