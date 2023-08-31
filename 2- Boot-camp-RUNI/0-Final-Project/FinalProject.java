@@ -1,27 +1,52 @@
+import java.util.Scanner;  // Import the Scanner class
 public class FinalProject {
 	public static void main(String[] args) {
-		System.out.println("\n\n================Welcome to Minesweeper ! ================\n");//chose coor
-		int n = 10; // Integer.parseInt(args[0]); // get 10
-		int m = 10; // Integer.parseInt(args[1]); // get 10
-		double p = 0.1; // Double.parseDouble(args[2]); // get 0.1
+		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		System.out.println("\n=============== Welcome to Minesweeper game ! ============ ");
+		System.out.println("Please enter height and width, ");
+		System.out.println("of the grid that you want to play ! ");
+		System.out.println("and proprty of mines you would like to play (0-1).");
+		System.out.print("Height (at integer number): "); 
+		int n = myObj.nextInt(); 
+		System.out.print("Width (at integer number): ");
+		int m = myObj.nextInt(); 
+		System.out.print("Proprty (at double number between 0-1): ");
+		double p = myObj.nextDouble(); 
+		System.out.println("\n============== Excellent! lets tell you how the game work ==============\n");
+		System.out.println("The game is very simple!");
+		System.out.println("The program should asked for 2 integer coordinates (one at a time), ");
+		System.out.println("and what to do with the tile (0 for left-click, 1 for right click (flag).");
+		System.out.println("The grid is then printed If a non-mine tile is chosen, ");
+		System.out.println("it is replaced with a number signifying the number of mines adjacent to it.");
+		System.out.println("If a mine is clicked, the grid so far is printed, showing all unflagged mines,");
+		System.out.println("and the game ends!");
+		System.out.println("\n============== Start play ! this is your grid: (good luck!) ==============\n");
 		int[][] playGreed = createGrid(n, m, p);
-		displayGrid(playGreed);
-		System.out.println();
-		displayGrid(mapGrid(n, m)); // print the array of 1111
-		System.out.println();
-		System.out.println("Please give me cordination of something: "); // chose some cordinate
-		int a = Integer.parseInt(args[0]); //
-		int b = Integer.parseInt(args[1]); //
-		System.out.println();
-		// displayGrid(changeGrid(a, b, mapGrid(n, m), updateGrid(mineGreed))); // - newgrid with the cell that the user open
-		displayGrid(addFlagToGrid(a,b, mapGrid(n, m)));
+		displayGrid(mapGrid(n, m)); // print the array of 9999
 
-		// displayGrid(mineGreed); // Receives a grid, and prints it(with mines)
-		// System.out.println();
+		// while (game==true) {
+			//play
+		// }
+		//print - you lose
 
-		// displayGrid(updateGrid(mineGreed)); // Receives a grid, and prints it(with mines)
-		// System.out.println();
-		// System.out.println();
+		
+		System.out.println("\n== Please enter your move(one at a time)==");
+		System.out.println("== and what todo with the tile (0=unflag, 1=flag): ==\n");
+		System.out.print("Row (at integer number): "); 
+		int x = myObj.nextInt(); 
+		System.out.print("Coloum (at integer number): ");
+		int y = myObj.nextInt(); 
+		System.out.print("Flag or Unflag (0 for un-flag, 1 for flag): ");
+		int z = myObj.nextInt();
+
+// Step 9: displayGrid(gameMethod);
+//method: public static [][] gameMethod(x,y,z,[][]map,[][]grid){
+			//crete[][] arr
+			//
+			//return arr map+opencel
+			//if cell==-1 - boolen game= false
+			//play 
+// 		  } 
 	}
 // Step 1: Get n,m,p% mine --> return createGrid 
 	public static int[][] createGrid(int n, int m, double p) {
@@ -82,7 +107,7 @@ public class FinalProject {
 	}
 // Step 3: Get coordinate, and returns the value in that coordinate.
 	public static int returnVal(int a, int b) {
-		int res = arr[a][b];
+		int res = 1;
 		return res;
 	}
 // Step 4: Get coordinate + mapGrid + minegrid --> return opengrid
@@ -125,7 +150,29 @@ public class FinalProject {
 // Step 6: Get updateGrid + mapGrid --> prints the display the user should have.
 	public static int[][] changeGrid( int[][] updateGrid, int[][] mapGrid) {
 		int[][] arr = new int[mapGrid.length][mapGrid[0].length];
-		
+		//display the user should have
+		//change the mapGrid[][] to the changeGrid[][]
+		//	display(changeGrid(int[][] updateGrid, int[][] mapGrid));
 		return arr;
 	}
+// Step 7: Get status and mineGrid --> returns if the game is complete.
 }
+//Step 8: Understand how to get user input for the coordinates. 
+// Write a matching function for getting user input (clicks/flags). 
+// Include handling for invalid inputs (flagging a marked tile, tile that doesn’t exist, and so on).
+// Step 8: Connect everything.
+// Bonus Step – split to functions in more places that make sense – such as the user input.
+// Bonus Step – think about runtime. Are there are times you go over the entirety of a 2d grid (which takes a long time) and you don’t actually need to?
+
+
+// Checklist before submission:
+//[] Can you play your game?
+//[] Is the game making sense? 
+//[] Are the games’ rules being followed by the computer?
+//[] Does it tell you if you lost, and stop the game correctly?
+//[] Does it tell you if you win, and stop the game correctly?
+//[] Can you break your game with type-correct input 
+//[] (so its fine if your game crashes when given a string when it expects an int. It shouldn’t crash if you try to access tile [7][7] in a 4x4 array, just tell the user and way for a different response.
+//[] Is there repeated code?
+//[] Is everything using conventions? 
+//[] This includes indentation, variable naming, variable typing, method naming, and other things I’m probably not thinking about currently.
