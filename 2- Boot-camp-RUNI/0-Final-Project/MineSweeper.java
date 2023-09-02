@@ -11,17 +11,15 @@ public class MineSweeper {
 		displayVisible(fieldVisible);
 		boolean game = true;
         while(game){								// while true			|| false
-			if(playMove(fieldHidden , fieldVisible) == true){
+			if(game == true){
+				displayFix (playMove(fieldHidden,fieldVisible));
 				//get coor from user >> (vis<=>hid)check?V 
 				// displayVisible();						//show field Visible	|| 
-			} else {
-				System.out.println("You lose!");
-				game=false;
-			}            
+			}
+			game=false; 
         }
-		
 	}	
-// foo() startMesage
+
 	public static void startMessage() {
 		System.out.println("\n|=============== Welcome to Minesweeper game ! =============|");		
 		System.out.println("|The game is very simple! The program should asked for 2    |");
@@ -32,14 +30,12 @@ public class MineSweeper {
 		System.out.println("|mines adjacent to it. If a mine is clicked, the grid so far|");
 		System.out.println("|is printed, showing all unflagged mines, and the game ends!|");
 	}	
-// foo() gameInstructions
 	public static void gameInstructions() {
 		System.out.println("\n|============ Excellent! lets create your game !! ==========|\n");
 		System.out.println("Please enter height and width, ");
 		System.out.println("of the grid that you want to play ! ");
 		System.out.println("and proprty of mines you would like to play (0-1).");
 	}
-// foo() gameGrid
 	public static int[][] buildHidden() {
 		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 		System.out.print("Height (at integer number): "); 
@@ -51,7 +47,6 @@ public class MineSweeper {
 		int[][] grid = createField(n, m, p);
 		return grid;
 	}
-// Step 1: Get n,m,p% mine --> return createGrid 
 	public static int[][] createField(int n, int m, double p) {
 		int[][] grid = new int[n][m]; // f.x: 10X10
 		for (int i = 0; i < grid.length; i++) {
@@ -64,7 +59,6 @@ public class MineSweeper {
 		int[][] fieldHidden = setupHidden(grid);
 		return fieldHidden;
 	}
-// Step 2: Get gridMines, changes 0 to number of adjacent mines.
 	public static int[][] setupHidden(int[][] grid) {
 		int[][] fieldHidden = new int[grid.length][grid[0].length];
 		for (int i = 0; i < grid.length; i++) {
@@ -86,12 +80,10 @@ public class MineSweeper {
 		}
 		return fieldHidden;
 	}
-//buildvisble
 	public static int[][] buildVisbble(int[][] fieldHidden){
 		int[][] fieldVisible = new int[fieldHidden.length][fieldHidden[0].length];
 		return fieldVisible;
 	}
-	// Step 0: Get n,m --> return displayHidenGrid 
 	public static int[][] displayVisible(int[][] fieldHidden){
 		int[][] fieldVisible = new int[fieldHidden.length][fieldHidden[0].length];
 		System.out.print("\t ");
@@ -103,7 +95,26 @@ public class MineSweeper {
 			System.out.print(i + "\t| ");
 			for(int j=0; j<fieldVisible.length; j++){
 				if(fieldVisible[i][j]==0){
-					System.out.print("0");
+					System.out.print("?");
+				}
+				System.out.print(" | ");
+			}
+			System.out.print("\n");	
+		}
+		return fieldVisible;
+	}
+	public static int[][] displayFix(int[][] fieldHidden){
+		int[][] fieldVisible = fieldHidden;
+		System.out.print("\t ");
+		for(int i=0; i<fieldVisible.length; i++){
+			System.out.print(" " + i + "  ");
+		}
+		System.out.print("\n");
+		for(int i=0; i<fieldVisible.length; i++){
+			System.out.print(i + "\t| ");
+			for(int j=0; j<fieldVisible.length; j++){
+				if(fieldVisible[i][j]==0){
+					System.out.print(" ");
 				}else if(fieldVisible[i][j]==-1){
 					System.out.print("X");
 				}else{
@@ -115,7 +126,6 @@ public class MineSweeper {
 		}
 		return fieldVisible;
 	}
-//display displayHidden
 	public static int[][] displayHidden(int[][] fieldHidden){
 		int[][] fieldVisible = new int[fieldHidden.length][fieldHidden[0].length];
 		System.out.print("\t ");
@@ -139,29 +149,57 @@ public class MineSweeper {
 		}
 		return fieldVisible;
 	}
-//play move	
-	public static boolean playMove(int[][] fieldHidden, int[][] fieldVisible){
+	public static int [][] playMove(int [][] fieldHidden, int [][] fieldVisible){
         Scanner sc= new Scanner(System.in);
         System.out.print("\nEnter Row Number: ");
         int i= sc.nextInt();
+		while(i >= fieldHidden.length && i <= fieldHidden.length){
+			System.out.println("Incorrect Input!!");
+			System.out.println("Please Enter Row Number again: ");
+			i= sc.nextInt();
+		}
         System.out.print("Enter Column Number: ");
         int j= sc.nextInt();
+		while(j >= fieldHidden[0].length && j <= fieldHidden[0].length){
+			System.out.println("Incorrect Input!!");
+			System.out.println("Please Enter coloum Number again: ");
+			j= sc.nextInt();
+		}
         System.out.print("Enter 1 for open or 0 to flag : ");
         int z= sc.nextInt();
-        if( (i<0 && i>9) || (j<0 && j>9) ){
-            System.out.print("\nIncorrect Input!!\n");
-        }
-        if(fieldHidden[i][j]==-1){
-            displayHidden(fieldVisible);
-            System.out.print("Oops! You stepped on a mine!\n============GAME OVER============");
-            //GAME OVER
-			return false;
-        }else if(fieldHidden[i][j]==0){
-            displayVisible(changeGrid(i, j, fieldHidden,fieldVisible ));
-        }
-        return true;		
+		while(z != 1 && z!=0){
+			System.out.println("Incorrect Input!!");
+			System.out.println("Please Enter 1=flag or 0=unflag: ");
+			j= sc.nextInt();
+		}
+		return fixVisble(i, j,fieldVisible, fieldHidden);
 	}
-
+	public static int[][] fixVisble(int a, int b, int[][] fieldVisible, int[][] fieldHidden) {
+		if (fieldHidden[a][b] == -1) {
+			System.out.println("\n\n================ Game over ! ================\n");
+			displayHidden(fieldHidden);
+		} else if (fieldHidden[a][b] == 0) {
+			for (int i = (a - 1); i <= (a + 1) ; i++) {
+				for (int j = (b - 1); j <= (b + 1); j++) {
+					if (i >= 0 && i < fieldHidden.length && j >= 0 && j < fieldHidden[0].length) {
+						fieldVisible[i][j] = fieldHidden[i][j];
+						if(fieldVisible[i][j]==0){
+							for(int x = i-1; x<=i+1; x++){
+								for(int y = j-1; y<=j+1; y++){
+									if (x >= 0 && x < fieldHidden.length && y >= 0 && y < fieldHidden[0].length){
+										fieldVisible[x][y]= fieldHidden[x][y];
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} else {
+			fieldVisible[a][b] = fieldHidden[a][b];
+		}
+		return fieldVisible;
+	}
 
 // Step 1: Get grid[][] --> return print it -1=x, else=0
 	public static void displayGrid(int[][] mineGreed) {
@@ -181,32 +219,7 @@ public class MineSweeper {
 		int res = 1;
 		return res;
 	}
-// Step 4: Get coordinate + mapGrid + minegrid --> return opengrid
-	public static int[][] changeGrid(int a, int b, int[][] mapGrid, int[][] updateGrid) {
-		if (updateGrid[a][b] == -1) {
-			System.out.println("\n\n================ Game over ! ================\n");
-		} else if (updateGrid[a][b] == 0) {
-			for (int i = (a - 1); i <= (a + 1) ; i++) {
-				for (int j = (b - 1); j <= (b + 1); j++) {
-					if (i >= 0 && i < updateGrid.length && j >= 0 && j < updateGrid[0].length) {
-						mapGrid[i][j] = updateGrid[i][j];
-						if(mapGrid[i][j]==0){
-							for(int x = i-1; x<=i+1; x++){
-								for(int y = j-1; y<=j+1; y++){
-									if (x >= 0 && x < updateGrid.length && y >= 0 && y < updateGrid[0].length){
-										mapGrid[x][y]= updateGrid[x][y];
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		} else {
-			mapGrid[a][b] = updateGrid[a][b];
-		}
-		return mapGrid;
-	}
+
 // Step 5: Get coordinate + mapGrid --> return "FLAG"
 	public static int[][] addFlagToGrid(int a, int b, int[][] mapGrid) {
 		int [][] arr = mapGrid;
@@ -218,39 +231,9 @@ public class MineSweeper {
 		}
 		return arr;
 	}
-// Step 6: Get updateGrid + mapGrid --> prints the display the user should have.
-	public static int[][] changeGrid( int[][] updateGrid, int[][] mapGrid) {
-		int[][] arr = new int[mapGrid.length][mapGrid[0].length];
-		//display the user should have
-		//change the mapGrid[][] to the changeGrid[][]
-		//	display(changeGrid(int[][] updateGrid, int[][] mapGrid));
-		return arr;
-	}
-//
-	// public boolean playMove(int row, int col, int[][] fieldHidden){
-	// 	Scanner sc= new Scanner(System.in);
-	// 	System.out.print("\nEnter Row Number: ");
-	// 	int i= sc.nextInt();
-	// 	System.out.print("Enter Column Number: ");
-	// 	int j= sc.nextInt();
-	// 	if(i<0 || i>row || j<0 || j>col ){
-	// 		System.out.print("\nIncorrect Input!!\n");
-	// 		return true;
-	// 	}
-	// 	if(fieldHidden[i][j]==-1){
-	// 		displayHidden();
-	// 		System.out.print("Oops! You stepped on a mine!\n============GAME OVER============");
-	// 		return false;
-	// 	}else if(fieldHidden[i][j]==0){
-	// 		fixVisible(i, j);
-	// 	}else{
-	// 		fixNeighbours(i, j);
-	// 	}
-	// 	return true;
-	// }
 // Step 7: Get status and mineGrid --> returns if the game is complete.
-
 }
+
 
 //Step 8: Understand how to get user input for the coordinates. 
 // Write a matching function for getting user input (clicks/flags). 
