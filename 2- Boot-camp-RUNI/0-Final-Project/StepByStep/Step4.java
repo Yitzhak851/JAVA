@@ -1,3 +1,4 @@
+package StepByStep;
 public class Step4 {
     	//get statusgrid and minegrid and return opengrid
 	public static int[][] changeGrid(int a, int b, int[][] createStatus, int[][] mineGreed) {

@@ -1,3 +1,4 @@
+package testFile;
 import java.util.*;// Import the Scanner class
 
 public class TestFile {
