@@ -142,15 +142,26 @@ public class MineSweeper {  // start the public class MineSweeper
 * the user win!
 */
     public static boolean checkWin(int[][] gridValue, int[][] gridStatus) {
-        for(int i=0; i<gridStatus.length; i++){
-            for(int j=0; j<gridStatus[0].length; j++){
+        for(int i=0; i<gridValue.length; i++){
+            for(int j=0; j<gridValue[0].length; j++){
                 if(gridValue[i][j]==-1 && (gridStatus[i][j]==-9 || gridStatus[i][j]==-7 ) ){
                     if(gridValue[i][j]!= -1 && (gridStatus[i][j]==-5 || gridStatus[i][j]==gridValue[i][j] )){
                         return true;
                     }
-                }                
+                }
             }
-        }        
+        }
+        int count=0;
+        for(int i=0; i<gridValue.length; i++){
+            for(int j=0; j<gridValue[0].length; j++){
+                if(gridValue[i][j]!= -1 && (gridStatus[i][j]==-5 || gridStatus[i][j]==gridValue[i][j] )){
+                    count++;
+                }
+            }
+        }
+        if(count==(gridValue.length)*(gridValue[0].length)){
+            return true;
+        }
         return false;
     }
 // small method that telling the user some instructers about the game
@@ -198,6 +209,7 @@ public class MineSweeper {  // start the public class MineSweeper
         System.out.println("\n\t======= Grate, this is your grid, good luck! ====== \n");
         displayStatus(gridStatus);
         boolean flag= true;
+//--------------------------------------------------------------------------        
         while(flag){
             Scanner scan = new Scanner(System.in);
             System.out.print("\n\tEnter Row Number: ");
@@ -223,8 +235,14 @@ public class MineSweeper {  // start the public class MineSweeper
 		    }                 
             System.out.println("\tThe value on the coordinate: " + valCoor(a,b,c,gridValue,gridStatus)+"\n");
             displayStatus(playMove(a,b,c, gridValue,gridStatus));
-            checkWin(gridValue, playMove(a,b,c,gridValue,gridStatus));
-            flag = game(valCoor(a, b, c, gridValue, gridStatus));
+            boolean win = false;
+            win = checkWin(gridValue, gridStatus);
+            if(win){
+                System.out.println("\n\t==========You win !!============\n");
+                flag=false;
+            }else{
+                flag = game(valCoor(a, b, c, gridValue, gridStatus));
+            }
         }
     }	
 }// end the public class MineSweeper
