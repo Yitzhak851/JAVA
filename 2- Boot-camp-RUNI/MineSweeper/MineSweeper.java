@@ -11,16 +11,16 @@ public class MineSweeper {
                 gridStatus[i][j] = -7;
             }
         }
-        while(true){
+        boolean flag= true;
+        while(flag){
             Scanner s = new Scanner(System.in);
             System.out.print("\n\tEnter Row Number: ");
             int a = s.nextInt();
             System.out.print("\tEnter Column Number: ");
             int b = s.nextInt();
             System.out.println("\tThe value on the coordinate: " + valCoor(a,b,gridValue)+"\n");
-            playMove(a,b,gridValue,gridStatus);
-            int[][] fixField = clickCoor(a, b, tempField);
-            displayVisible(fixField);
+            displayStatus(playMove(a,b,gridValue,gridStatus));
+            flag = game(valCoor(a, b, gridValue));        
         }
 	}		
 	public static int[][] buildGrid(int n, int m, double p) {
@@ -63,88 +63,79 @@ public class MineSweeper {
 	}
 	public static int[][] playMove(int a, int b, int[][] gridValue, int[][] gridStatus){
         if(gridValue[a][b]== -1){
-            System.out.println("\n========GAME OVER!========\n");
-            display(gridValue);
-        } else if (gridValue[a][b]== 0){
+            System.out.println("\n\t========GAME OVER!========\n");
+            gridStatus=gridValue;
+            return gridStatus;
+        } else if (gridValue[a][b] == 0){
             gridStatus[a][b] = -5;
+            return gridStatus;
         } else {
-            
+            gridStatus[a][b] = gridValue[a][b];
+            return gridStatus;
         }
 	}
-	public static int[][] displayVisible(int[][] fieldHidden){
+	/*This method represent the moves that the user enter.
+     * this method get int[][] array ant return display of gridStatus
+     * the number (-5) = represent tile that "isopen" = [ ]
+     * the number (-7) = represent tile that "isClose" = [?]
+     * the number (-9) = represent tile that "isFlag" = [>]
+     * the number (num) = represent tile that "isFlag" = [num]
+     * the number (-1) = represent tile that "isMine" = [X]
+     * 
+     */
+    public static int[][] displayStatus(int[][] gridStatus){
 		System.out.print("\t ");
-		for(int i=0; i<fieldHidden.length; i++){
+		for(int i=0; i<gridStatus.length; i++){
 			System.out.print(" " + i + "  ");
 		}
 		System.out.print("\n");
-		for(int i=0; i<fieldHidden.length; i++){
+		for(int i=0; i<gridStatus.length; i++){
 			System.out.print(i + "\t| ");
-			for(int j=0; j<fieldHidden.length; j++){
-				if(fieldHidden[i][j]==8){
+			for(int j=0; j<gridStatus.length; j++){
+				if(gridStatus[i][j]== -5 ){
 					System.out.print(" ");
-				} else if(fieldHidden[i][j]==9) {
+				} else if(gridStatus[i][j]== -7 ) {
 					System.out.print("?");
-                }else if(fieldHidden[i][j]!=-1 && fieldHidden[i][j]!=0){
-					System.out.print(fieldHidden[i][j]);
+                }else if(gridStatus[i][j]!=-1 && gridStatus[i][j]!=0){
+					System.out.print(gridStatus[i][j]);
+                }else if(gridStatus[i][j]== 0){
+					System.out.print(" ");                    
                 }else{
-                    System.out.print("You lose!");
+                    System.out.print("X");
                 }
 				System.out.print(" | ");
 			}
 			System.out.print("\n");	
 		}
-		return fieldHidden;
+		return gridStatus;
 	} 
-    public static int[][] clickCoor2(int a, int b, int[][] fieldHidden){
-        int[][] grid = fieldHidden;
-        if(valCoor(a, b, fieldHidden) != -1){
-            if(valCoor(a, b, fieldHidden) == 8){
-                grid[a][b] = fieldHidden[a][b];    
-            }else{
-                grid[a][b] = 8;
-            }
-            return grid;
-        }else {
-            System.out.println("==================Game over!==================");
-            display(fieldHidden);
-            return grid;
-        }
-	}
-
-	public static int[][] display(int[][] fieldHidden){
+	public static int[][] displayValue(int[][] gridValue){
 		System.out.print("\t ");
-		for(int i=0; i<fieldHidden.length; i++){
+		for(int i=0; i<gridValue.length; i++){
 			System.out.print(" " + i + "  ");
 		}
 		System.out.print("\n");
-		for(int i=0; i<fieldHidden.length; i++){
+		for(int i=0; i<gridValue.length; i++){
 			System.out.print(i + "\t| ");
-			for(int j=0; j<fieldHidden.length; j++){
-				if(fieldHidden[i][j]==0){
+			for(int j=0; j<gridValue.length; j++){
+				if(gridValue[i][j]==0){
 					System.out.print(" ");
-				} else if(fieldHidden[i][j]==-1){
+				} else if(gridValue[i][j]==-1){
 					System.out.print("X");
-                } else if(fieldHidden[i][j]==8){
-					System.out.print("8");
-				}else{
-					System.out.print(fieldHidden[i][j]);
+                } else {
+					System.out.print(gridValue[i][j]);
 				}
 				System.out.print(" | ");
 			}
 			System.out.print("\n");	
 		}
-		return fieldHidden;
+		return gridValue;
 	}	
-// Step 5: Get coordinate + mapGrid --> return "FLAG"
-	public static int[][] addFlagToGrid(int a, int b, int[][] fieldVisible, int[][] fieldHidden) {
-		fieldVisible[a][b] = 8;
-		if(fieldVisible[a][b] != 8){
-			fieldVisible[a][b] = 8;
-		} else {
-			fieldVisible[a][b] = fieldHidden[a][b];
-		}
-		return fieldVisible;
-	}
+    public static boolean game(int a) {
+        if(a==-1){
+            return false;
+        } else{
+            return true;
+        }
+    }
 }
-}
-
