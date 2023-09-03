@@ -4,8 +4,8 @@ public class Step4 {
 		int n = 10; 
 		int m = 10; 
 		double p = 0.1;
-		int [][] fieldHidden = setupGrid(buildGrid(n,m,p));
-        int[][] tempField = fieldHidden;
+		int [][] fieldHidden = setupGrid(buildGrid(n,m,p)); // Array with VAL
+		int[][] tempField = fieldHidden;					// Array with status
         while(true){
             Scanner s = new Scanner(System.in);
             System.out.print("\n\tEnter Row Number: ");

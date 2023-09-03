@@ -1,20 +1,24 @@
 import java.util.Scanner;// Import the Scanner class
 public class MineSweeper {
-    
 	public static void main(String[] args) {
 		int n = 10; 
 		int m = 10; 
 		double p = 0.1;
-		int [][] fieldHidden = setupGrid(buildGrid(n,m,p));
-        int[][] tempField = fieldHidden;
+		int [][] gridValue = setupGrid(buildGrid(n,m,p));
+        int[][] gridStatus = new int[gridValue.length][gridValue[0].length];
+        for(int i=0; i<gridStatus.length; i++){
+            for(int j=0; j<gridStatus[0].length; j++){
+                gridStatus[i][j] = -7;
+            }
+        }
         while(true){
             Scanner s = new Scanner(System.in);
             System.out.print("\n\tEnter Row Number: ");
             int a = s.nextInt();
             System.out.print("\tEnter Column Number: ");
             int b = s.nextInt();
-            System.out.println("\tThe val on the coor: " + valCoor(a,b,fieldHidden)+"\n");
-            clickCoor2(a,b,tempField);
+            System.out.println("\tThe value on the coordinate: " + valCoor(a,b,gridValue)+"\n");
+            playMove(a,b,gridValue,gridStatus);
             int[][] fixField = clickCoor(a, b, tempField);
             displayVisible(fixField);
         }
@@ -53,36 +57,18 @@ public class MineSweeper {
 		}
 		return fieldHidden;
 	}
-	public static int valCoor(int a, int b, int[][] fieldHidden ){
-        int res = fieldHidden[a][b];
+	public static int valCoor(int a, int b, int[][] gridValue ){
+        int res = gridValue[a][b];
 		return res;
 	}
-	public static int[][] clickCoor(int a, int b, int[][] fieldHidden){
-        int[][] fieldVisible = new int[fieldHidden.length][fieldHidden[0].length];
-        for(int i=0; i<fieldVisible.length; i++){
-            for(int j=0; j<fieldVisible[0].length;j++){
-                fieldVisible[i][j]=9;
-            }
-        }
-        if(fieldHidden [a][b]==0){
-            for (int i = a; i < fieldHidden.length; i++) {
-			    for (int j = b; j < fieldHidden[b].length; j++) {
-				    for (int x = (a - 1); x <= (a + 1); x++) {
-    					for (int y = (b - 1); y <= (b + 1); y++) {
-						    if (x >= 0 && x < fieldHidden.length && y >= 0 && y < fieldHidden[0].length && fieldHidden[x][y] == (0)) {
-                                fieldVisible [a][b] = 8;
-                            }
-					    }
-				    }
-			    }
-		    }
-		return fieldVisible;
-		} else if(fieldHidden [a][b] != -1 && fieldHidden [a][b] != 0){
-            fieldVisible [a][b] = fieldHidden [a][b] ;
-            return fieldVisible;
+	public static int[][] playMove(int a, int b, int[][] gridValue, int[][] gridStatus){
+        if(gridValue[a][b]== -1){
+            System.out.println("\n========GAME OVER!========\n");
+            display(gridValue);
+        } else if (gridValue[a][b]== 0){
+            gridStatus[a][b] = -5;
         } else {
-            fieldVisible [a][b] = -1;
-            return fieldHidden;
+            
         }
 	}
 	public static int[][] displayVisible(int[][] fieldHidden){
