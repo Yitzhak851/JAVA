@@ -22,9 +22,8 @@ public class MineSweeper {  // start the public class MineSweeper
 		return fieldHidden;
 	}
 /* This method getting the grid with value of (-1) or (0) .
- *  and count all the mines. near all tile with mines 
- *  she return tile with value that represent the sum of the mine
- *  near this tile. 
+ * @mineCount -  count all the mines. near all tile with mines .
+ * @return - tile with value that represent the sum of the mine near this tile. 
  */
     public static int[][] setupGrid(int[][] gridValue) {
 		for (int i = 0; i < gridValue.length; i++) {
@@ -63,7 +62,36 @@ public class MineSweeper {  // start the public class MineSweeper
             return res;
         }
 	}
-/* This method getting moves from user enter.
+
+    public static int[][] openEmptyCell(int a, int b, int[][] gridValue, int[][] gridStatus) {
+        while (gridValue[a][b] == 0) {
+            if(gridValue[a][b] != 0 && gridValue[a][b] != -1){
+                gridStatus[a][b] = gridValue[a][b] ;
+            } else{
+                gridStatus[a][b] = -5 ;
+            }
+            b++;
+        }
+        while (gridValue[a][b] == 0) {
+            gridStatus[a][b] = -5 ;
+            b--;
+        }
+        while (gridValue[a][b] == 0) {
+            gridStatus[a][b] = -5 ;
+            a--;
+        }
+        while (gridValue[a][b] == 0) {
+            gridStatus[a][b] = -5 ;
+            a++;
+        }        
+        // row ,col
+        //  a  , b+1    b++
+        //  a  , b-1    b--
+        //  a-1, b      a--
+        //  a+1, b      a++
+		return gridStatus;
+	}
+    /* This method getting moves from user enter.
 * and return int[][] array display of gridStatus
 * if user choose coordinate with (-1) print GAME OVER and return gridValue and print it.
 */
@@ -73,6 +101,7 @@ public class MineSweeper {  // start the public class MineSweeper
             return gridValue;
         } else if (gridValue[a][b] == 0 && c==1){
             gridStatus[a][b] = -5;
+            gridStatus = openEmptyCell(a,b, gridValue,gridStatus);
             return gridStatus;
         }else if ((gridValue[a][b] != 0 && gridValue[a][b] != -1)&&(c==1)){
             gridStatus[a][b] = gridValue[a][b];
@@ -97,7 +126,7 @@ public class MineSweeper {  // start the public class MineSweeper
 * the number (-5) = represent tile that "isopen" = [ ]
 * the number (-7) = represent tile that "isClose" = [?]
 * the number (-9) = represent tile that "isFlag" = [F]
-* the number (num) = represent tile that "isFlag" = [num]
+* the number (num) = represent tile that "isNum" = [num]
 * the number (-1) = represent tile that "isMine" = [X]
 */
     public static int[][] displayStatus(int[][] gridStatus){
@@ -171,11 +200,11 @@ public class MineSweeper {  // start the public class MineSweeper
 		System.out.println("of the grid that you want to play ! ");
 		System.out.println("and proprty of mines you would like to play (0-1).");
 	}
-    /* This  is the main method.
+/* This  is the main method.
 *  this method play the game.
 *  this method get from the user sizes of the game.
 *  and build the grid game. 
-*/    
+*/
     public static void main(String[] args) {
         gameInstructions();
         Scanner s = new Scanner(System.in);
