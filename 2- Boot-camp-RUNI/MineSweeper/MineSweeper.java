@@ -26,26 +26,27 @@ public class MineSweeper {  // start the public class MineSweeper
  *  she return tile with value that represent the sum of the mine
  *  near this tile. 
  */
-    public static int[][] setupGrid(int[][] fieldHidden) {
-		for (int i = 0; i < fieldHidden.length; i++) {
-			for (int j = 0; j < fieldHidden[0].length; j++) {
-				if (fieldHidden[i][j] == (-1) ){
-					fieldHidden[i][j] = (-1);
+    public static int[][] setupGrid(int[][] gridValue) {
+		for (int i = 0; i < gridValue.length; i++) {
+			for (int j = 0; j < gridValue[0].length; j++) {
+				if (gridValue[i][j] == (-1) ){
+					gridValue[i][j] = (-1);
 				} else {
 					int mineCount = 0; 
 					for (int x = (i - 1); x <= (i + 1); x++) {
 						for (int y = (j - 1); y <= (j + 1); y++) {
-                            //TODO - to right here the logic of this founction
-							if (x >= 0 && x < fieldHidden.length && y >= 0 && y < fieldHidden[0].length && fieldHidden[x][y] == (-1)) {
+                            // Only if there is a mine in 8 squares around me count it,and only if the 8 squares are in the boundaries of the board
+							if (x >= 0 && x < gridValue.length && y >= 0 && y < gridValue[0].length && gridValue[x][y] == (-1)) {
 								mineCount++;
 							}
 						}
 					}
-					fieldHidden[i][j] = mineCount;
+                    // here i declrate the sum of the mines in the tile
+					gridValue[i][j] = mineCount;
 				}
 			}
 		}
-		return fieldHidden;
+		return gridValue;
 	}
 /* This method get number that represent flag/ open tile , coordinate and 2 array.
 *  and return number of the coordinate.
