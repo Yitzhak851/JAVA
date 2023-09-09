@@ -63,35 +63,36 @@ public class MineSweeper {  // start the public class MineSweeper
         }
 	}
 
-    public static int[][] openEmptyCell(int a, int b, int[][] gridValue, int[][] gridStatus) {
-        while (gridValue[a][b] == 0) {
-            if(gridValue[a][b] != 0 && gridValue[a][b] != -1){
-                gridStatus[a][b] = gridValue[a][b] ;
-            } else{
-                gridStatus[a][b] = -5 ;
+    public static int[][] openEmptyCells(int row, int col, int[][] gridValue, int[][] gridStatus) {
+        // Check if the cell is out of bounds or has already been opened.
+        if (row < 0 || row >= gridValue.length || col < 0 || col >= gridValue[0].length || gridStatus[row][col] == -5) {
+            return gridStatus;
+        }
+        
+        // Mark the current cell as opened.
+    	gridStatus[row][col] = -5;
+        
+        // If the current cell is empty (value 0), recursively open its neighbors.
+        if (gridValue[row][col] == 0) {
+            // Define the 8 possible neighbor offsets.
+            int[] dr = {-1, -1, -1, 0, 0, 1, 1, 1};
+            int[] dc = {-1, 0, 1, -1, 1, -1, 0, 1};
+            
+            // Iterate through all neighbors.
+            for (int i = 0; i < 8; i++) {
+                int newRow = row + dr[i];
+                int newCol = col + dc[i];
+                
+                // Recursively open adjacent empty cells.
+                gridStatus = openEmptyCells(newRow, newCol, gridValue, gridStatus);
             }
-            b++;
         }
-        while (gridValue[a][b] == 0) {
-            gridStatus[a][b] = -5 ;
-            b--;
-        }
-        while (gridValue[a][b] == 0) {
-            gridStatus[a][b] = -5 ;
-            a--;
-        }
-        while (gridValue[a][b] == 0) {
-            gridStatus[a][b] = -5 ;
-            a++;
-        }        
-        // row ,col
-        //  a  , b+1    b++
-        //  a  , b-1    b--
-        //  a-1, b      a--
-        //  a+1, b      a++
-		return gridStatus;
-	}
-    /* This method getting moves from user enter.
+        
+        return gridStatus;
+    }
+
+
+/* This method getting moves from user enter.
 * and return int[][] array display of gridStatus
 * if user choose coordinate with (-1) print GAME OVER and return gridValue and print it.
 */
@@ -101,7 +102,7 @@ public class MineSweeper {  // start the public class MineSweeper
             return gridValue;
         } else if (gridValue[a][b] == 0 && c==1){
             gridStatus[a][b] = -5;
-            gridStatus = openEmptyCell(a,b, gridValue,gridStatus);
+            gridStatus = openEmptyCells(a,b, gridValue,gridStatus);
             return gridStatus;
         }else if ((gridValue[a][b] != 0 && gridValue[a][b] != -1)&&(c==1)){
             gridStatus[a][b] = gridValue[a][b];
