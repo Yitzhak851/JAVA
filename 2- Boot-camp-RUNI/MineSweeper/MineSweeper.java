@@ -63,31 +63,23 @@ public class MineSweeper {  // start the public class MineSweeper
         }
 	}
 
-    // public static int[][] openEmptyCells(int row, int col, int[][] gridValue, int[][] gridStatus) {
-    //     // Check if the cell is out of bounds or has already been opened.
-    //     if (row < 0 || row >= gridValue.length || col < 0 || col >= gridValue[0].length || gridStatus[row][col] == -5) {
-    //         return gridStatus;
-    //     }
-        
-    //     // Mark the current cell as opened.
-    // 	gridStatus[row][col] = -5;
-        
-    //     // If the current cell is empty (value 0), recursively open its neighbors.
-    //     if (gridValue[row][col] == 0) {
-    //         // Define the 8 possible neighbor offsets.
-    //         int[] dr = {-1, -1, -1, 0, 0, 1, 1, 1};
-    //         int[] dc = {-1, 0, 1, -1, 1, -1, 0, 1};
-            
-    //         // Iterate through all neighbors.
-    //         for (int i = 0; i < 8; i++) {
-    //             int newRow = row + dr[i];
-    //             int newCol = col + dc[i];
-                
-    //             // Recursively open adjacent empty cells.
-    //             gridStatus = openEmptyCells(newRow, newCol, gridValue, gridStatus);
+    // public static int[][] openEmptyCells(int x, int y, int[][] gridValue, int[][] gridStatus) {
+    //     gridStatus[x][y] = -5;
+    //     for (int i = x - 1; i <= x + 1; i++) {
+    //         for (int j = y - 1; j <= y + 1; j++) {
+    //             if (x >= 0 && x < gridValue.length && y >= 0 && y < gridValue[0].length) {
+    //                 if (gridValue[i][j] == 0){
+    //                     openEmptyCells(i, j,gridValue,gridStatus);
+    //                 } else if (gridValue[i][j] == -1 || gridValue[i][j] == -5){
+    //                     continue;
+    //                 } else {
+    //                     if (gridStatus[i][j] == -7){
+    //                         gridStatus[i][j] = gridValue[i][j];
+    //                     }
+    //                 }
+    //             }
     //         }
     //     }
-        
     //     return gridStatus;
     // }
 
