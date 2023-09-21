@@ -186,7 +186,6 @@ public class MineSweeper { // start the public class MineSweeper
                 }
             }
         }        
-        fofo(gridStatus);
         return gridStatus;
     }
 
