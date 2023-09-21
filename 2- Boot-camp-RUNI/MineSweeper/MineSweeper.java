@@ -74,7 +74,11 @@ public class MineSweeper { // start the public class MineSweeper
             return res;
         }
     }
-
+    /*
+     * This method get coordinate and 2 array.
+     * if the user choose emty tile this method return all the empty tile arange + tile with number.
+     * if the number inside the tile is (-1) - this method doesnt open it.
+     */
     public static int[][] openEmptyCells(int x, int y, int[][] gridValue, int[][] gridStatus) {
         int k = x; //  k,y  (down)  (0,0), (-1,0) XXXXX ....
         while (k >= 0 && k<gridValue.length) {
@@ -182,6 +186,7 @@ public class MineSweeper { // start the public class MineSweeper
                 }
             }
         }        
+        fofo(gridStatus);
         return gridStatus;
     }
 
