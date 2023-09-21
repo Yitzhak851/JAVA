@@ -1,4 +1,3 @@
-
 /**
  * This class contain a "minesweeper" game.
  * @author (Yitzhak baror)
@@ -74,119 +73,41 @@ public class MineSweeper { // start the public class MineSweeper
             return res;
         }
     }
+    
+    public static int valueTile(int x, int y, int[][] gridValue, int[][] gridStatus) {
+        int a= gridValue[x][y];
+        return a;
+    }
+    public static void openCell(int x, int y, int[][] gridValue, int[][] gridStatus ) {
+        gridStatus[x][y] = gridValue[x][y];
+        return ;
+    }
+
     /*
      * This method get coordinate and 2 array.
      * if the user choose emty tile this method return all the empty tile arange + tile with number.
      * if the number inside the tile is (-1) - this method doesnt open it.
      */
-    public static int[][] openEmptyCells(int x, int y, int[][] gridValue, int[][] gridStatus) {
-        int k = x; //  k,y  (down)  (0,0), (-1,0) XXXXX ....
-        while (k >= 0 && k<gridValue.length) {
-            if (gridValue[k][y] != -1) {
-                if (gridValue[k][y] == 0) {
-                    gridStatus[k][y] = -5; //"isopen"
-                    k--;
-                } else {
-                    gridStatus[k][y]= gridValue[k][y]; 
-                    break;
-                }
-            }
+    public static void openEmptyCells(int x, int y, int[][] gridValue, int[][] gridStatus) {
+        System.out.println(x);
+        System.out.println(y);
+        
+        // if out of range
+        if((x<0||x>gridValue.length-1)||(y<0||y>gridValue[x].length-1)){
+            return;
         }
-        int n = x; // n,y  (up) ^  (0,0), (1,0), (2,0) .....
-        while (n >= 0 && n <gridValue.length) {
-            if (gridValue[n][y] != -1) {
-                if (gridValue[n][y] == 0) {
-                    gridStatus[n][y] = -5; // "isopen"
-                    n++;
-                } else {
-                    gridStatus[n][y] = gridValue[n][y];
-                    break;
-                }
-            }
-        }
-        int a = y; // n,y -----> (0,0), (0,1), (0,2) .....
-        while (a >= 0 && a < gridValue[x].length) {
-            if (gridValue[x][a] != -1) {
-                if (gridValue[x][a] == 0) {
-                    gridStatus[x][a] = -5; 
-                    a++;
-                } else {
-                    gridStatus[x][a] = gridValue[x][a]; 
-                    break;
-                }
-            }
-        }   
-        int b = y; //    <----  (5,5), (5,4), (5,3) .....
-        while (b >= 0 && b<gridValue[x].length ) {
-            if (gridValue[x][b] != -1) {
-                if (gridValue[x][b] == 0) {
-                    gridStatus[x][b] = -5; 
-                    b--;
-                } else {
-                    gridStatus[x][b]= gridValue[x][b];
-                    break;
-                }
-            }
-        } 
-        int c = y; //         ^   col (5,5) => (4,4) => (4,3),(4,5),(3,4),(5,4)
-        int d = x;//           \  row 
-        while ((c >= 0 && c < gridValue[d].length) && (d >=0 && d<gridValue.length )) { 
-            if (gridValue[d][c] != -1) {
-                if (gridValue[d][c] == 0) {
-                    gridStatus[d][c] = -5;
-                    c--;
-                    d--;
-                    
-                } else {
-                    gridStatus[d][c]= gridValue[d][c];
-                    break;
-                }
-            }
+        //open empty cell
+        openCell(x, y, gridValue, gridStatus);
+        // if valGrid == number
+        if (gridValue[x][y] > 0 ) { 
+            return;
         }        
-        int e = y; //         ^   col
-        int f = x;//         /  row
-        while ((e >= 0 && f >=0) && (e<gridValue[0].length && f < gridValue.length) ) { 
-            if (gridValue[f][e] != -1) {
-                if (gridValue[f][e] == 0) {
-                    gridStatus[f][e] = -5; 
-                    f--;
-                    e++;
-                } else {
-                    gridStatus[f][e]= gridValue[f][e]; 
-                    break;
-                }
-            }
-        } 
-        int g = y; //       \    col
-        int h = x;//         V  row
-        while ((g >= 0  && c < gridValue[0].length) && (h>=0 && h<gridValue.length)){ 
-            if (gridValue[g][h] != -1) {
-                if (gridValue[g][h] == 0) {
-                    gridStatus[g][h] = -5; 
-                    h++;
-                    g++;
-                    
-                } else {
-                    gridStatus[h][g]= gridValue[h][g]; 
-                    break;
-                }
-            }
-        }
-        int i = y; //       /    col
-        int j = x;//       V  row
-        while ((i >= 0 && j >=0) && (i<gridValue[0].length && j<gridValue.length)){ 
-            if (gridValue[j][i] != -1) {
-                if (gridValue[j][i] == 0) {
-                    gridStatus[j][i] = -5; // change gridStatus cell that the user choice (0-empty && 1-open ) to empty
-                    j++;
-                    i--;
-                } else {
-                    gridStatus[j][i]= gridValue[j][i]; // change gridStatus cell that the user choice (toNumber).
-                    break;
-                }
-            }
-        }        
-        return gridStatus;
+        //recutsion
+        openEmptyCells(x+1, y, gridValue, gridStatus);
+        openEmptyCells(x-1, y, gridValue, gridStatus);
+        openEmptyCells(x, y+1, gridValue, gridStatus);
+        openEmptyCells(x, y-1, gridValue, gridStatus);
+        return ;
     }
 
     /*
@@ -200,7 +121,7 @@ public class MineSweeper { // start the public class MineSweeper
             System.out.println("\n\t========GAME OVER!========\n");
             return gridValue;
         } else if ( (gridValue[a][b] == 0 && gridStatus[a][b] != -5 ) && c == 1) {
-            gridStatus = openEmptyCells(a, b, gridValue, gridStatus);
+            openEmptyCells(a, b, gridValue, gridStatus);
             return gridStatus;
         } else if ((gridValue[a][b] != 0 && gridValue[a][b] != -1)&&(gridStatus[a][b] != gridValue[a][b]) && (c == 1)) {
             gridStatus[a][b] = gridValue[a][b];
