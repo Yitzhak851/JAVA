@@ -91,15 +91,18 @@ public class MineSweeper { // start the public class MineSweeper
     public static void openEmptyCells(int x, int y, int[][] gridValue, int[][] gridStatus) {
         System.out.println(x);
         System.out.println(y);
-        
         // if out of range
         if((x<0||x>gridValue.length-1)||(y<0||y>gridValue[x].length-1)){
             return;
         }
+        // if valGrid == number
+        if (gridStatus[x][y] == -5 || gridStatus[x][y]>0) { 
+            return;
+        }        
         //open empty cell
         openCell(x, y, gridValue, gridStatus);
         // if valGrid == number
-        if (gridValue[x][y] > 0 ) { 
+        if (gridValue[x][y] > 0) { 
             return;
         }        
         //recutsion
