@@ -20,7 +20,6 @@ class app {
         colomns = col;
         // creates the backstage board.
         for (int i = 0; i < rows; i++) {
-
             for (int j = 0; j < colomns; j++) {
                 if (Math.random() < chance) {
                     bBoard[i][j] = -1; // -1 is the assigned value to express a mine.
@@ -394,7 +393,6 @@ class app {
             System.out.println("ERROR: Invalid size , please enter new width that is bigger than 0");
             y = input.nextInt();
         }
-
         System.out.println("Please enter a probability for a mine to appear , between 0 and 1");
         chance = input.nextDouble();
         while (chance >= 1 || chance <= 0) {
