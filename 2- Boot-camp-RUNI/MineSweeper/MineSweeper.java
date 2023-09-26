@@ -1,3 +1,4 @@
+
 /**
  * This class contain a "minesweeper" game.
  * @author (Yitzhak baror)
@@ -6,32 +7,58 @@
 import java.util.Scanner; // import the Scanner class
 
 public class MineSweeper { // start the public class MineSweeper
+    static int[][] gridValue;
+    static int[][] gridStatus;
+    static int n;
+    static int m;
+    static double p;
+    static int x; // row that the user choose
+    static int y; // col that the user choose
+    static int c; // flag/open that the user choose
+    static Scanner s = new Scanner(System.in);
+    static boolean isGame = true;
+    static boolean win = false;
+
     /*
      * This method getting from the user sizes of the grid,
-     * and return the grid with value of (-1) or (0) .
+     * and call the method "buildGrid" that create the grid's .
+     * and call the method "start" that start the while loop of the game.
      */
-    public static int[][] buildGrid(int n, int m, double p) {
-        int[][] fieldHidden = new int[n][m];
-        for (int i = 0; i < fieldHidden.length; i++) {
-            for (int j = 0; j < fieldHidden[i].length; j++) {
-                if (Math.random() < p) {
-                    fieldHidden[i][j] = (-1);
-                } else {
-                    fieldHidden[i][j] = (0);
-                }
-            }
-        }
-        return fieldHidden;
+    public static void openGame() {
+        buildGrid(n, m, p); // creating the 2 grid's.
+        start(); // start the while loop of the game.
     }
 
     /*
-     * This method getting the grid with value of (-1) or (0) .
+     * This method getting from the user sizes of the grid,
+     * and create "gridValue" + "gridStatus" .
+     */
+    public static void buildGrid(int n, int m, double p) {
+        gridValue = new int[n][m]; // initional the value
+        for (int i = 0; i < gridValue.length; i++) {
+            for (int j = 0; j < gridValue[i].length; j++) {
+                if (Math.random() < p) {
+                    gridValue[i][j] = (-1);
+                } else {
+                    gridValue[i][j] = (0);
+                }
+            }
+        }
+        setupGrid(gridValue); // update value on tile that neat a mine.
+        gridStatus = new int[n][m]; // initional the status (-7) equal isClose
+        for (int i = 0; i < gridStatus.length; i++) {
+            for (int j = 0; j < gridStatus[0].length; j++) {
+                gridStatus[i][j] = -7;
+            }
+        }
+    }
+
+    /*
+     * This method create the update gridValue.
      * 
      * @mineCount - count all the mines. near all tile with mines .
-     * 
-     * @return - tile with value that represent the sum of the mine near this tile.
      */
-    public static int[][] setupGrid(int[][] gridValue) {
+    public static void setupGrid(int[][] gridValue) {
         for (int i = 0; i < gridValue.length; i++) {
             for (int j = 0; j < gridValue[0].length; j++) {
                 if (gridValue[i][j] == (-1)) {
@@ -48,133 +75,41 @@ public class MineSweeper { // start the public class MineSweeper
                             }
                         }
                     }
-                    // here i declrate the sum of the mines in the tile
+                    // initional the sum of the mines in the tile
                     gridValue[i][j] = mineCount;
                 }
             }
         }
-        return gridValue;
     }
 
     /*
-     * This method get number that represent flag/ open tile , coordinate and 2
-     * array.
-     * and return number of the coordinate.
-     * if the number inside the tile is (-1) - founction at name flage get it
-     * and stop the game - otherwise the game continue.
-     */
-    public static int valCoor(int a, int b, int c, int[][] gridValue, int[][] gridStatus) {
-        int res = 0;
-        if (c == 1) {
-            res = gridValue[a][b];
-            return res;
-        } else {
-            res = gridStatus[a][b];
-            return res;
-        }
-    }
-    
-    public static int valueTile(int x, int y, int[][] gridValue, int[][] gridStatus) {
-        int a= gridValue[x][y];
-        return a;
-    }
-    public static void openCell(int x, int y, int[][] gridValue, int[][] gridStatus ) {
-        gridStatus[x][y] = gridValue[x][y];
-        return ;
-    }
-
-    /*
-     * This method get coordinate and 2 array.
-     * if the user choose emty tile this method return all the empty tile arange + tile with number.
-     * if the number inside the tile is (-1) - this method doesnt open it.
-     */
-    public static void openEmptyCells(int x, int y, int[][] gridValue, int[][] gridStatus) {
-        System.out.println(x);
-        System.out.println(y);
-        // if out of range
-        if((x<0||x>gridValue.length-1)||(y<0||y>gridValue[x].length-1)){
-            return;
-        }
-        // if valGrid == number
-        if (gridStatus[x][y] == -5 || gridStatus[x][y]>0) { 
-            return;
-        }        
-        //open empty cell
-        openCell(x, y, gridValue, gridStatus);
-        // if valGrid == number
-        if (gridValue[x][y] > 0) { 
-            return;
-        }        
-        //recutsion
-        openEmptyCells(x+1, y, gridValue, gridStatus);
-        openEmptyCells(x-1, y, gridValue, gridStatus);
-        openEmptyCells(x, y+1, gridValue, gridStatus);
-        openEmptyCells(x, y-1, gridValue, gridStatus);
-        return ;
-    }
-
-    /*
-     * This method getting moves from user enter.
-     * and return int[][] array display of gridStatus
-     * if user choose coordinate with (-1) print GAME OVER and return gridValue and
-     * print it.
-     */
-    public static int[][] playMove(int a, int b, int c, int[][] gridValue, int[][] gridStatus) {
-        if (gridValue[a][b] == -1 && c == 1) {
-            System.out.println("\n\t========GAME OVER!========\n");
-            return gridValue;
-        } else if ( (gridValue[a][b] == 0 && gridStatus[a][b] != -5 ) && c == 1) {
-            openEmptyCells(a, b, gridValue, gridStatus);
-            return gridStatus;
-        } else if ((gridValue[a][b] != 0 && gridValue[a][b] != -1)&&(gridStatus[a][b] != gridValue[a][b]) && (c == 1)) {
-            gridStatus[a][b] = gridValue[a][b];
-            return gridStatus;
-        // --------------------------------------------------------------------------
-        } else if (gridStatus[a][b] == -7 && c == 0) { // if "isClose" && flag
-            gridStatus[a][b] = -9; //return "isFlag"
-            return gridStatus;
-        } else if (gridStatus[a][b] == -9 && c == 0) { // if "isFlag" && flag
-            gridStatus[a][b] = -7; //return "isClose"
-            return gridStatus;
-        } else if (gridStatus[a][b] == -5 && c == 0) { //if "isopen" && flag
-            gridStatus[a][b] = -9; //return "isFlag"
-            return gridStatus;
-        } else if ((gridStatus[a][b] == -5 && c == 1)||((gridStatus[a][b] == gridValue[a][b] && c==1))) { //if "isopen" && open
-            System.out.println("\n\t====== you allready open this tile, please choose another tile!! ===== \n");
-            return gridStatus;
-        // --------------------------------------------------------------------------
-        } else {
-            return gridStatus;
-        }
-    }
-
-    /*
-     * This method display the moves that the user enter.
-     * this method get int[][] array ant return display of gridStatus
+     * This method display the grid status of the game.
+     * this method get int[][] array ant return display of the grid.
      * the number (-5) = represent tile that "isopen" = [ ]
      * the number (-7) = represent tile that "isClose" = [?]
      * the number (-9) = represent tile that "isFlag" = [F]
      * the number (num) = represent tile that "isNum" = [num]
      * the number (-1) = represent tile that "isMine" = [X]
+     * the number (0) = represent tile that "isEmpty" = [ ]
      */
-    public static int[][] displayStatus(int[][] gridStatus) {
+    public static void displayStatus(int[][] array) {
         System.out.print("\t ");
-        for (int i = 0; i < gridStatus.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             System.out.print(" " + i + "  ");
         }
         System.out.print("\n");
-        for (int i = 0; i < gridStatus.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             System.out.print(i + "\t| ");
-            for (int j = 0; j < gridStatus.length; j++) {
-                if (gridStatus[i][j] == -5) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i][j] == -5) { // tile "isopen" = [ ]
                     System.out.print(" ");
-                } else if (gridStatus[i][j] == -7) {
+                } else if (array[i][j] == -7) { // tile "isClose" = [?]
                     System.out.print("?");
-                } else if (gridStatus[i][j] != -1 && gridStatus[i][j] != 0 && gridStatus[i][j] != -9) {
-                    System.out.print(gridStatus[i][j]);
-                } else if (gridStatus[i][j] == -9) {
+                } else if (array[i][j] > 0) { // tile that "isNum" = [num]
+                    System.out.print(array[i][j]);
+                } else if (array[i][j] == -9) { // tile "isFlag" = [F]
                     System.out.print("F");
-                } else if (gridStatus[i][j] == 0) {
+                } else if (array[i][j] == 0) { // tile that "isEmpty" = [ ]
                     System.out.print(" ");
                 } else {
                     System.out.print("X");
@@ -183,19 +118,95 @@ public class MineSweeper { // start the public class MineSweeper
             }
             System.out.print("\n");
         }
-        return gridStatus;
     }
 
     /*
-     * This method is the condition if the game can continue.
-     * if the user enter (-1) so the flag is false and "GAME OVER".
+     * This method work withe the "sccaner" object.
+     * it getting - coordinate from the user.
+     * and if the coordinate are not corect the founction ask for correct value.
+     * if the coordinate are correct - the game continue.
+     * and the founction "playMove" - work.
      */
-    public static boolean game(int a) {
-        if (a == -1) {
-            return false;
-        } else {
-            return true;
+    public static void userChoice() {
+        System.out.print("\n\tEnter Row Number: ");
+        x = s.nextInt();
+        while (x < 0 || x >= gridValue.length) {
+            System.out.println("Incorrect Input!!\nPlease Enter number between grid length again: ");
+            x = s.nextInt();
         }
+        System.out.print("\tEnter Column Number: ");
+        y = s.nextInt();
+        while (y < 0 || y >= gridValue[0].length) {
+            System.out.println("Incorrect Input!!\nPlease Enter number between grid length again: ");
+            y = s.nextInt();
+        }
+        System.out.print("\tEnter 1=open/close, 0=flag/unflag:");
+        c = s.nextInt();
+        while (c != 0 && c != 1) {
+            System.out.print("\nIncorrect Input!!\nPlease Enter 0 or 1: ");
+            c = s.nextInt();
+        }
+        System.out.println();
+    }
+
+    /*
+     * This method getting moves from "userChoice".
+     * and initional it in the "gridStatus".
+     * if user choose coordinate with (-1) = print GAME OVER,
+     * and return gridValue and print it.
+     * if everthing correct - "displayStatus" + "checkWin" + continue.
+     */
+    public static void playMove() {
+        if (gridValue[x][y] == -1 && c == 1) { // if isMine && open
+            System.out.println("\n\t========GAME OVER!========\n");
+            isGame = false;
+            gridStatus = gridValue; // show gridValue
+        } else if ((gridValue[x][y] == 0 && gridStatus[x][y] != -5) && c == 1) { // if isEmpty && isClose && open
+            openEmptyCells(x, y);
+        } else if ((gridValue[x][y] > 0) && (gridStatus[x][y] != gridValue[x][y]) && (c == 1)) { // if isNum && notEqual
+                                                                                                 // && open
+            gridStatus[x][y] = gridValue[x][y];
+        } else if (gridStatus[x][y] == -7 && c == 0) { // if "isClose" && flag
+            gridStatus[x][y] = -9; // init "isFlag"
+        } else if (gridStatus[x][y] == -9 && c == 0) { // if "isFlag" && flag
+            gridStatus[x][y] = -7; // init "isClose"
+        } else if (gridStatus[x][y] == -5 && c == 0) { // if "isopen" && flag
+            gridStatus[x][y] = -9; // init "isFlag"
+        } else if ((gridStatus[x][y] == -5 || gridStatus[x][y] > 0 && c == 1)) { // if "isopen" || isNum && open
+            System.out.println("\n\t====== you allready open this tile, please choose another tile!! ===== \n");
+        }
+    }
+
+    /*
+     * This method get coordinate and 2 array.
+     * if the user choose emty tile this method return all the empty tile arange +
+     * tile with number.
+     * if the number inside the tile is (-1) - this method doesnt open it.
+     */
+    public static void openEmptyCells(int x, int y) {
+        // if out of range - stop
+        if ((x < 0 || x > gridValue.length - 1) || (y < 0 || y > gridValue[x].length - 1)) {
+            return;
+        }
+        // if gridStatus == isOpen || gridStatus isFlag
+        if ((gridStatus[x][y] == -5) || (gridStatus[x][y] == -9)) {
+            return;
+        }
+        // if isNum
+        if ((gridValue[x][y] > 0)) {
+            gridStatus[x][y] = gridValue[x][y]; // open and stop
+            return;
+        }
+        // if gridValue isMine - stop
+        if (gridValue[x][y] == -1) {
+            return;
+        }
+        // recutsion
+        openEmptyCells(x + 1, y);
+        openEmptyCells(x - 1, y);
+        openEmptyCells(x, y + 1);
+        openEmptyCells(x, y - 1);
+        return;
     }
 
     /*
@@ -203,111 +214,49 @@ public class MineSweeper { // start the public class MineSweeper
      * if the gridStatus equal to gridValue.
      * the user win!
      */
-    public static boolean checkWin(int[][] gridValue, int[][] gridStatus) {
+    public static void checkWin() {
         for (int i = 0; i < gridValue.length; i++) {
             for (int j = 0; j < gridValue[0].length; j++) {
+                // if (isMine && (isClose || isFlag))
                 if (gridValue[i][j] == -1 && (gridStatus[i][j] == -9 || gridStatus[i][j] == -7)) {
-                    if (gridValue[i][j] != -1 && (gridStatus[i][j] == -5 || gridStatus[i][j] == gridValue[i][j])) {
-                        return true;
+                    // if ((isNum || isEmpty) && (isOpen || isNum))
+                    if ((gridValue[i][j] != -1)
+                            && ((gridStatus[i][j] == -5) || (gridStatus[i][j] == gridValue[i][j]))) {
+                        // the user win if all the tile of gridStatus equal to gridValue win=true
+                        win = true;
                     }
                 }
             }
         }
-        int count = 0;
-        for (int i = 0; i < gridValue.length; i++) {
-            for (int j = 0; j < gridValue[0].length; j++) {
-                if (gridValue[i][j] != -1 && (gridStatus[i][j] == -5 || gridStatus[i][j] == gridValue[i][j])) {
-                    count++;
-                }
-            }
-        }
-        if (count == (gridValue.length) * (gridValue[0].length)) {
-            return true;
-        }
-        return false;
-    }
-
-    // small method that telling the user some instructers about the game
-    public static void gameInstructions() {
-        System.out.println("Please enter height and width, ");
-        System.out.println("of the grid that you want to play ! ");
-        System.out.println("and proprty of mines you would like to play (0-1).");
     }
 
     /*
-     * This is the main method.
-     * this method play the game.
-     * this method get from the user sizes of the game.
-     * and build the grid game.
+     * This method in fact is the mainly game.
+     * and if the game - game-over so it print game over.
+     */
+    public static void start() {
+        System.out.println("\n\t======= Grate, this is your grid, good luck! ====== \n");
+        displayStatus(gridStatus); // show to the user the grid.
+        while (isGame) { // isGame defult is "true"
+            userChoice(); // ask for coor from user.
+            playMove(); // do the move of the user choose
+            displayStatus(gridStatus); // show the grid status
+            checkWin(); // if all the tile of gridStatus equal to gridValue win=true
+            if (win) {
+                isGame = false; // end the game
+                System.out.println("\n\t==========You win !!============\n"); // print for the user - "You win"
+            }
+        }
+    }
+
+    /*
+     * This is the main method, this method open the game MineSweeper.
+     * the method get at the command line: sizes of the game and property.
      */
     public static void main(String[] args) {
-        gameInstructions();
-        Scanner s = new Scanner(System.in);
-        System.out.print("Height (integer number between 0-20): ");
-        int n = s.nextInt();
-        while (n <= 0 || n >= 20) {
-            System.out.println("Incorrect Input!!");
-            System.out.print("Please Enter number between 0-20 again: ");
-            n = s.nextInt();
-        }
-        System.out.print("Width (integer number between 0-20): ");
-        int m = s.nextInt();
-        while (m <= 0 || m >= 20) {
-            System.out.println("Incorrect Input!!");
-            System.out.print("Please Enter number between 0-20 again: ");
-            m = s.nextInt();
-        }
-        System.out.print("Proprty (at double number between 0-1): ");
-        double p = s.nextDouble();
-        while (p < 0 || p > 1) {
-            System.out.println("Incorrect Input!!");
-            System.out.print("Please Enter number between 0-1 again: ");
-            p = s.nextInt();
-        }
-        int[][] gridValue = setupGrid(buildGrid(n, m, p));
-        int[][] gridStatus = new int[gridValue.length][gridValue[0].length];
-        for (int i = 0; i < gridStatus.length; i++) {
-            for (int j = 0; j < gridStatus[0].length; j++) {
-                gridStatus[i][j] = -7;
-            }
-        }
-        System.out.println("\n\t======= Grate, this is your grid, good luck! ====== \n");
-        displayStatus(gridStatus);
-        boolean flag = true;
-        // --------------------------------------------------------------------------
-        while (flag) {
-            Scanner scan = new Scanner(System.in);
-            System.out.print("\n\tEnter Row Number: ");
-            int a = scan.nextInt();
-            while (a < 0 || a >= gridValue.length) {
-                System.out.println("Incorrect Input!!");
-                System.out.print("Please Enter number between grid length again: ");
-                a = s.nextInt();
-            }
-            System.out.print("\tEnter Column Number: ");
-            int b = scan.nextInt();
-            while (b < 0 || b >= gridValue[0].length) {
-                System.out.println("Incorrect Input!!");
-                System.out.print("Please Enter number between grid length again: ");
-                b = s.nextInt();
-            }
-            System.out.print("\tEnter 1=open/close, 0=flag/unflag: ");
-            int c = scan.nextInt();
-            while (c != 0 && c != 1) {
-                System.out.println("Incorrect Input!!");
-                System.out.print("Please Enter 0 or 1: ");
-                c = s.nextInt();
-            }
-            System.out.println("\tThe value on the coordinate: " + valCoor(a, b, c, gridValue, gridStatus) + "\n");
-            displayStatus(playMove(a, b, c, gridValue, gridStatus));
-            boolean win = false;
-            win = checkWin(gridValue, gridStatus);
-            if (win) {
-                System.out.println("\n\t==========You win !!============\n");
-                flag = false;
-            } else {
-                flag = game(valCoor(a, b, c, gridValue, gridStatus));
-            }
-        }
+        n = Integer.parseInt(args[0]);
+        m = Integer.parseInt(args[1]);
+        p = Double.parseDouble(args[2]);
+        openGame();
     }
 }// end the public class MineSweeper
