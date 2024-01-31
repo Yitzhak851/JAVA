@@ -1,3 +1,13 @@
+/**
+ * this class contain my small project,
+ * that try to create suduko board and calculate the sum of each row, column and
+ * small array
+ * 
+ * @version 1.0
+ * @since 2024-01-31
+ * Course: CS-203
+ * @author - Yitzhak Bar or
+ */
 public class Suduko {
     static int[][] sudukoBoard = new int[9][9];
     static double p = 0.4;
@@ -6,7 +16,7 @@ public class Suduko {
         initFirstsudukoBoard(); // initialize the board
         printSudukoBoard(); // print the board
         calcSumOfRow(); // calculate the sum of each row
-        calcSumOfCol();  // calculate the sum of each column
+        calcSumOfCol(); // calculate the sum of each column
         calcSmallArray(); // calculate the sum of each small array
     }
 
