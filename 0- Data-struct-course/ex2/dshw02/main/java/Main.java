@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// some nice tester class that someone send me
 public class Main {
     public static void main(String[] args) {
         List<String> testResults = new ArrayList<>();
