@@ -8,8 +8,8 @@
 
 public class MoltDriver {
     // ============== fields ==============
-    int id;         // unique id - employee number
-    String name;    // driver name
+    int id; // unique id - employee number
+    String name; // driver name
     int nextAvailableTimeForDelivery;
 
     // ============== constructor ==============
@@ -21,9 +21,9 @@ public class MoltDriver {
     }
 
     // ============== Operator's of this ADT ==============
-    // TODO
+    // done
     public void incrementTotalOrdersDelivered() {
-        //
+        this.nextAvailableTimeForDelivery++;
     }
 
     // ============== getter's ==============
@@ -37,39 +37,42 @@ public class MoltDriver {
         return name;
     }
 
-    //done
-    public int getId(){
+    // done
+    public int getId() {
         return id;
     }
 
     // ============== setter's ==============
-    // TODO 
+    // done
     public void setNextAvailableTimeForDelivery(int time) {
-        //
+        this.nextAvailableTimeForDelivery = time;
     }
 
-
     // ============== toString ==============
-    // TODO
+    // done
     public String toString() {
         String str1 = Integer.toString(getId());
         String str2 = getName();
         String str3 = Integer.toString(getNextAvailableTimeForDelivery());
-        String str = "Id Driver: " + str1 + "\nName: " + str2 + "\nNext Available Time For Delivery: " + str3 ;
+        String str = "Id Driver: " + str1 + "\nName: " + str2 + "\nNext Available Time For Delivery: " + str3;
         return str;
     }
 
-    // ============== TODO - compareTo ==============
-    // TODO
+    // ============== compareTo ==============
+    // done
     public int compareTo(MoltDriver otherDriver) {
-        return -1;
+        if (this.nextAvailableTimeForDelivery < otherDriver.nextAvailableTimeForDelivery) {
+            return -1;
+        } else if (this.nextAvailableTimeForDelivery > otherDriver.nextAvailableTimeForDelivery) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     // public static void main(String[] args) {
-    //     MoltDriver driver1 = new MoltDriver(208837278, "Yitzhak", 5);
-    //     System.out.println(driver1);
+    // MoltDriver driver1 = new MoltDriver(208837278, "Yitzhak", 5);
+    // System.out.println(driver1);
     // }
 
-
-
-}   // end of the class
+} // end of the class

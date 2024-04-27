@@ -36,7 +36,8 @@ public class MoltOrder {
         String str3 = Integer.toString(getOrderReadyTime());
         String str4 = Integer.toString(getTimeNeededToDeliver());
         String str5 = Integer.toString(getPriority());
-        String str = "Order Description: " + str1 + "\nName: " + str2 + "\nOrder Ready Time: " + str3 + "\nTime Needed To Deliver: " + str4 + "\nPriority: " + str5 ;
+        String str = "Order Description: " + str1 + "\nName: " + str2 + "\nOrder Ready Time: " + str3
+                + "\nTime Needed To Deliver: " + str4 + "\nPriority: " + str5;
         return str;
     }
 
@@ -52,7 +53,7 @@ public class MoltOrder {
     }
 
     // done
-    public int getPriority(){
+    public int getPriority() {
         return priority;
     }
 
@@ -67,14 +68,20 @@ public class MoltOrder {
     }
 
     // ============== TODO - compareTo ==============
-    // TODO
+    // done
     public int compareTo(MoltOrder otherOrder) {
-        return -1;
+        if (this.getPriority() < otherOrder.getPriority()) {
+            return -1;
+        } else if (this.getPriority() > otherOrder.getPriority()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     // public static void main(String[] args) {
-    //     MoltOrder order1 = new MoltOrder("Alice", "Pizza", 10, 30, 1);
-    //     System.out.println(order1);
+    // MoltOrder order1 = new MoltOrder("Alice", "Pizza", 10, 30, 1);
+    // System.out.println(order1);
     // }
 
 } // end of the class
