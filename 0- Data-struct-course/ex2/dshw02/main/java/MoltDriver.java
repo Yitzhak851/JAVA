@@ -66,7 +66,7 @@ public class MoltDriver {
     }
 
     // public static void main(String[] args) {
-    //     MoltDriver driver1 = new MoltDriver(208837278, "Yossi", 5);
+    //     MoltDriver driver1 = new MoltDriver(208837278, "Yitzhak", 5);
     //     System.out.println(driver1);
     // }
 
