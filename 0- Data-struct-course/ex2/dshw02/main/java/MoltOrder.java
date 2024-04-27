@@ -66,7 +66,7 @@ public class MoltOrder {
         return orderDescription;
     }
 
-    // ============== compareTo ==============
+    // ============== TODO - compareTo ==============
     // TODO
     public int compareTo(MoltOrder otherOrder) {
         return -1;
