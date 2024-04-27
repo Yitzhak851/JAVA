@@ -1,12 +1,18 @@
-// represent a molt delivery driver
+/*
+ * It is a generic class - heap class
+ * Represent a details about molt delivery driver.
+ * 
+ * @author - Yitzhak Bar or
+ * @version - 27/04/24
+ */
 
 public class MoltDriver {
     // fields
     int id; // unique id - employee number
-    String name;  // drivers name
+    String name; // driver name
     int nextAvailableTimeForDelivery;
 
-    // Consructor's
+    // Consructor of MoltDriver object
     public MoltDriver(int id, String name, int nextAvailableTimeForDelivery) {
         this.id = id;
         this.name = name;
@@ -23,20 +29,20 @@ public class MoltDriver {
         return AvailableTimeForDelivery;
     }
 
-    public void setNextAvailableTimeForDelivery(int time){
-
+    public void setNextAvailableTimeForDelivery(int time) {
+        //
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public String toString(){
+    public String toString() {
         return "";
     }
 
-    public int compareTo(MoltDriver otherDriver){
-        
+    public int compareTo(MoltDriver otherDriver) {
+        return -1;
     }
 
 }

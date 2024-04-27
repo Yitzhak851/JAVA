@@ -9,16 +9,12 @@ public class MoltOrder {
     int priority;
 
     public MoltOrder(String name, String orderDescription, int orderReadyTime, int timeNeededToDeliver, int priority) {
-
+        //
     }
 
     public String toString() {
         String str = "";
         return str;
-    }
-
-    public int compareTo(MoltOrder otherOrder) {
-        return -1;
     }
 
     // getter's
@@ -38,4 +34,8 @@ public class MoltOrder {
         return orderDescription;
     }
 
-}
+    public int compareTo(MoltOrder otherOrder) {
+        return -1;
+    }
+
+}// end of the class
