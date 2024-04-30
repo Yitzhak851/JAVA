@@ -9,22 +9,21 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MoltOrderTest {
-    List<String> expectedMethodNames = List.of("toString", "getOrderReadyTime", "getTimeNeededToDeliver",
-            "getName", "getOrderDescription", "compareTo");
+        List<String> expectedMethodNames = List.of("toString", "getOrderReadyTime", "getTimeNeededToDeliver",
+                        "getName", "getOrderDescription", "compareTo");
 
+        @Test
+        void allMethodsPresent() {
+                List<String> actualMethodNames = Arrays.stream(MoltOrder.class.getMethods())
+                                .filter(method -> Modifier.isPublic(method.getModifiers()))
+                                .map(Method::getName)
+                                .collect(Collectors.toList());
 
-    @Test
-    void allMethodsPresent() {
-        List<String> actualMethodNames = Arrays.stream(MoltOrder.class.getMethods())
-                .filter(method -> Modifier.isPublic(method.getModifiers()))
-                .map(Method::getName)
-                .collect(Collectors.toList());
+                List<String> missingNames = expectedMethodNames.stream()
+                                .filter(name -> !actualMethodNames.contains(name))
+                                .collect(Collectors.toList());
 
-        List<String> missingNames = expectedMethodNames.stream()
-                .filter(name -> !actualMethodNames.contains(name))
-                .collect(Collectors.toList());
-
-        String message = "The following methods are missing: " + String.join(", ", missingNames);
-        assertEquals(0, missingNames.size(), message);
-    }
+                String message = "The following methods are missing: " + String.join(", ", missingNames);
+                assertEquals(0, missingNames.size(), message);
+        }
 }

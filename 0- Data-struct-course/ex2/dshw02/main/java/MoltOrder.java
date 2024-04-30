@@ -6,17 +6,18 @@
  * @author - Yitzhak Bar or
  * @version - 27/04/24
  */
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-//import java.util.ArrayList;
-//import java.util.List;
 
-public class MoltOrder {
+public class MoltOrder implements Comparable<MoltOrder> {
     // ============== fields ==============
-    String orderDescription;
-    String name;
-    int orderReadyTime;
-    int timeNeededToDeliver;
-    int priority;
+    private String orderDescription;
+    private String name;
+    private int orderReadyTime;
+    private int timeNeededToDeliver;
+    private int priority;
 
     // ============== constructor ==============
     // done
@@ -70,9 +71,9 @@ public class MoltOrder {
     // ============== TODO - compareTo ==============
     // done
     public int compareTo(MoltOrder otherOrder) {
-        if (this.getPriority() < otherOrder.getPriority()) {
+        if (this.priority < otherOrder.priority) {
             return -1;
-        } else if (this.getPriority() > otherOrder.getPriority()) {
+        } else if (this.priority > otherOrder.priority) {
             return 1;
         } else {
             return 0;

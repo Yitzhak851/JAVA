@@ -5,103 +5,164 @@
  * @author - Yitzhak Bar or
  * @version - 27/04/24
  */
-// GeneralPurposeHeap class:
-// As you can see in the code listing towards the end of this PDF, GeneralPurposeHeap has three
-// constructors for you to implement. They each serve a different purpose to users.
-// The GeneralPurposeHeap class should have the following methods:
-// • Constructor taking no parameters. Creates a heap with a sensible default capacity
-//      (“sensible” is subjective; use your best judgement).
-// • Constructor taking a single parameter, an int “initialCapacity” which defines the initial
-//      number of elements the heap can store before resizing.
-// • Constructor taking a single parameter, an array “initialData”. If you use “T” as the type
-//      variable of GeneralPurposeHeap then the type of this parameter should be T[].
-//      (If this description doesn’t make sense to you, consider reading about Generic Types in
-//      Java).
-// Important note: 
-// your implementation must run in linear time (linear in the size of the  resulting heap).
-// Take particular care when implementing mergeHeap. 
-// This method takes a second heap as a parameter and “merges” that heap’s elements into the current heap. 
-// I.e., after merging otherHeap and the heap represented by this:
-// • otherHeap has not been altered in any way,
-// • this contains the union of the elements of this (before the merge) and of otherHeap
-// • this still satisfies the heap property
-// Important note: 
-// your implementation must run in linear time (linear in the size of the resulting heap).
-// Insert into a Heap which is full should not cause an error. 
-// The Heap should grow in capacity to hold more elements, then insert the element as normal.
-// deleteMin/findMin on an empty heap should throw an exception
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class GeneralPurposeHeap<T> {
+public class GeneralPurposeHeap<T extends Comparable<T>> {
     // ============== fields ==============
-    int initialCapacity;
-    T[] initialData;
-    T element;
+
+    private int size; // number of elements in the heap
+    private T[] heap; // array of elements - heap
+    // private int initialCapacity;
+    // private T element;
 
     // ============== constructor ==============
-    // done
     public GeneralPurposeHeap() {
-        this.initialCapacity = initialCapacity;
-        this.initialData = initialData;
-        this.element = element;
+        this(20);
     }
 
-    // done
+    // ============== constructor ==============
+    @SuppressWarnings("unchecked")
     public GeneralPurposeHeap(int initialCapacity) {
-        this.initialCapacity = initialCapacity;
+        // checks if the initial capacity is less than 1, if so throws an exception
+        if (initialCapacity < 1)
+            throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity + " Capacity must be at least 1");
+        // Initializes the heap array with the initial capacity and the size of the heap
+        this.heap = (T[]) new Comparable[initialCapacity];
+        this.size = 0;
     }
 
-    // done
     public GeneralPurposeHeap(T[] initialData) {
-        this.initialData = initialData;
+        this.size = initialData.length;
+        this.heap = Arrays.copyOf(initialData, size); // copies the elements of init. array to the heap array
+        for (int i = size / 2; i >= 0; i--) { // loop for percing down the heap
+            percolateDown(i);
+        }
     }
 
-    // ============== Operator's of this ADT ==============
-    // TODO
-    // Insert into a Heap which is full should not cause an error
-    // The Heap should grow in capacity to hold more elements, then insert the element as normal.
+    // ============== Operation's of this ADT =============
+    // ============== void fofo ==============
+
+    public void percolateDown(int i) {
+        while (hasLeftChild(i)) {
+            int smallestClildIndex = getLeftChildIndex(i);
+            if (hasRightChild(i) && rightChild(i).compareTo(leftChild(i)) < 0) {
+                smallestClildIndex = getRightChildIndex(i);
+            }
+            if (heap[i].compareTo(heap[smallestClildIndex]) < 0) {
+                break;
+
+            } else {
+                swap(i, smallestClildIndex);
+            }
+            i = smallestClildIndex;
+        }
+    }
+
+    public void percolateUp(int index) {
+        while (hasParent(index) && parent(index).compareTo(heap[index]) > 0) {
+            swap(getParentIndex(index), index);
+            index = getParentIndex(index);
+        }
+    }
+
+    public void swap(int indexOne, int indexTwo) {
+        T temp = heap[indexOne];
+        heap[indexOne] = heap[indexTwo];
+        heap[indexTwo] = temp;
+    }
+
     public void insert(T element) {
-        if (getSize() == 0) {
-            initialData[0] = element;
+        isExtraCapacity();
+        heap[size] = element;
+        size++;
+        percolateUp(size - 1);
+    }
+
+    public void isExtraCapacity() {
+        if (size == heap.length) {
+            heap = Arrays.copyOf(heap, size * 2);
         }
-        if (getSize() == initialData.length) {
-            // grow in capacity
-            // insert the element as normal
-        } else {
-
-            // insert the element as normal
-
-        }
-    }
-
-    // deleteMin/findMin on an empty heap should throw an exception
-    // TODO
-    public T findMin() {
-        // if (getSize() == 0) {
-        // throw new Exception("Empty heap");
-        // }
-        return null;
-    }
-
-    public int getSize() {
-        return initialData.length;
-    }
-
-    public T deleteMin() {
-        return null;
     }
 
     public void mergeHeap(GeneralPurposeHeap<T> otherHeap) {
-        //
+        T[] newArray = Arrays.copyOf(heap, size + otherHeap.size);
+        System.arraycopy(otherHeap.heap, 0, newArray, size, otherHeap.size);
+        heap = newArray;
+        size += otherHeap.size;
+        for (int i = size / 2; i >= 0; i--) {
+            percolateDown(i);
+        }
     }
 
-    public static void main(String[] args) {
-        // GeneralPurposeHeap<MoltOrder> orderHeap = new GeneralPurposeHeap<>();
-        // orderHeap.insert(order1);
-        // orderHeap.insert(order2);
-        // orderHeap.insert(order3);
+    public void printHeap() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(heap[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // ============== data fofo =================
+
+    public T findMin() {
+        if (size == 0)
+            throw new IllegalArgumentException("Empty Heap");
+        return heap[0];
+    }
+
+    public T deleteMin() {
+        if (size == 0)
+            throw new IllegalArgumentException("Empty Heap");
+        T temp = heap[0];
+        heap[0] = heap[size - 1];
+        heap[size - 1] = temp;
+        size--;
+        percolateDown(0);
+        return temp;
+    }
+
+    public boolean hasRightChild(int index) {
+        return getRightChildIndex(index) < size;
+    }
+
+    public boolean hasParent(int index) {
+        return getParentIndex(index) >= 0;
+    }
+
+    public boolean hasLeftChild(int index) {
+        return getLeftChildIndex(index) < size;
+    }
+
+    // ============== getters ==============
+
+    public int getLeftChildIndex(int parentIndex) {
+        return (parentIndex * 2) + 1;
+    }
+
+    public int getRightChildIndex(int parentIndex) {
+        return (parentIndex * 2) + 2;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getParentIndex(int childIndex) {
+        return (childIndex - 1) / 2;
+    }
+
+    // ============== private methods ==============
+
+    public T leftChild(int index) {
+        return heap[getLeftChildIndex(index)];
+    }
+
+    public T rightChild(int index) {
+        return heap[getRightChildIndex(index)];
+    }
+
+    public T parent(int index) {
+        return heap[getParentIndex(index)];
     }
 
 } // end class
