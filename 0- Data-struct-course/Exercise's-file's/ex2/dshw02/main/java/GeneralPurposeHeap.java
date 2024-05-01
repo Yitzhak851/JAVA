@@ -9,67 +9,59 @@
 import java.util.*;
 
 public class GeneralPurposeHeap<T extends Comparable<T>> {
-    // ============== fields ==============
-
+    // ============== fields/ properties ==============
     private int size; // number of elements in the heap
     private T[] heap; // array of elements - heap
-    // private int initialCapacity;
-    // private T element;
-
     // ============== constructor ==============
     public GeneralPurposeHeap() {
         this(20);
     }
-
-    // ============== constructor ==============
     @SuppressWarnings("unchecked")
     public GeneralPurposeHeap(int initialCapacity) {
         // checks if the initial capacity is less than 1, if so throws an exception
         if (initialCapacity < 1)
-            throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity + " Capacity must be at least 1");
+            throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity + " capacity must be at least 1");
         // Initializes the heap array with the initial capacity and the size of the heap
         this.heap = (T[]) new Comparable[initialCapacity];
         this.size = 0;
     }
-
     public GeneralPurposeHeap(T[] initialData) {
         this.size = initialData.length;
-        this.heap = Arrays.copyOf(initialData, size); // copies the elements of init. array to the heap array
-        for (int i = size / 2; i >= 0; i--) { // loop for percing down the heap
+        this.heap = Arrays.copyOf(initialData, size);
+
+        for (int i = size / 2; i >= 0; i--) {
             percolateDown(i);
         }
     }
-
     // ============== Operation's of this ADT =============
-    // ============== void fofo ==============
-
+    // ============== void fofo ==========================+
     public void percolateDown(int i) {
         while (hasLeftChild(i)) {
-            int smallestClildIndex = getLeftChildIndex(i);
+            int smallest = getLeftChildIndex(i);
             if (hasRightChild(i) && rightChild(i).compareTo(leftChild(i)) < 0) {
-                smallestClildIndex = getRightChildIndex(i);
+                smallest = getRightChildIndex(i);
             }
-            if (heap[i].compareTo(heap[smallestClildIndex]) < 0) {
+            if (heap[i].compareTo(heap[smallest]) < 0) {
                 break;
 
             } else {
-                swap(i, smallestClildIndex);
+                swap(i, smallest);
             }
-            i = smallestClildIndex;
+            i = smallest;
         }
     }
 
-    public void percolateUp(int index) {
-        while (hasParent(index) && parent(index).compareTo(heap[index]) > 0) {
-            swap(getParentIndex(index), index);
-            index = getParentIndex(index);
+    public void percolateUp(int i) {
+        while (hasParent(i) && parent(i).compareTo(heap[i]) > 0) {
+            swap(getParentIndex(i), i);
+            i = getParentIndex(i);
         }
     }
 
-    public void swap(int indexOne, int indexTwo) {
-        T temp = heap[indexOne];
-        heap[indexOne] = heap[indexTwo];
-        heap[indexTwo] = temp;
+    public void swap(int i1, int i2) {
+        T tmp = heap[i1];
+        heap[i1] = heap[i2];
+        heap[i2] = tmp;
     }
 
     public void insert(T element) {
@@ -113,12 +105,12 @@ public class GeneralPurposeHeap<T extends Comparable<T>> {
     public T deleteMin() {
         if (size == 0)
             throw new IllegalArgumentException("Empty Heap");
-        T temp = heap[0];
+        T tmp = heap[0];
         heap[0] = heap[size - 1];
-        heap[size - 1] = temp;
+        heap[size - 1] = tmp;
         size--;
         percolateDown(0);
-        return temp;
+        return tmp;
     }
 
     public boolean hasRightChild(int index) {
@@ -133,7 +125,7 @@ public class GeneralPurposeHeap<T extends Comparable<T>> {
         return getLeftChildIndex(index) < size;
     }
 
-    // ============== getters ==============
+    // ============== getters fofo ==============
 
     public int getLeftChildIndex(int parentIndex) {
         return (parentIndex * 2) + 1;
@@ -151,7 +143,7 @@ public class GeneralPurposeHeap<T extends Comparable<T>> {
         return (childIndex - 1) / 2;
     }
 
-    // ============== private methods ==============
+    // ============== T fofo ==============
 
     public T leftChild(int index) {
         return heap[getLeftChildIndex(index)];

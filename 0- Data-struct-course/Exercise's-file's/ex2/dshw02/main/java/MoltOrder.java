@@ -2,13 +2,12 @@
  * It is a generic class - heap class
  * Represent a details about molt delivery order.
  * represent a single order made by a customer.
- * 
+ *
  * @author - Yitzhak Bar or
  * @version - 27/04/24
  */
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 
 
 public class MoltOrder implements Comparable<MoltOrder> {
