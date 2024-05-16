@@ -33,8 +33,9 @@ public class CountingSort {
         for (int i : arrB) {
             arrB[i] = 0;
         }
-        // arrC = {1,1,3,5}; arrA = {4,1,3,4,3}; arrB={0,0,0,0,0};
-        for (int i = arrA.length - 1; i >= 0; i--) {
+        //      |0|1|2|3|       |0|1|2|3|4|      |0|1|2|3|4|
+        // arrC={1,1,3,5}; arrA={4,1,3,4,3};arrB={0,0,0,0,0};
+        for (int i = arrA.length-1 ; i >= 0; i--) {
             arrB[arrC[(arrA[i] - 1)]] = arrA[i];
             arrC[(arrA[i] - 1)] = arrC[(arrA[i] - 1)] - 1;
         }
