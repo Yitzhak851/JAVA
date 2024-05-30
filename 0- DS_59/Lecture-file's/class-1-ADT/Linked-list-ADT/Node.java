@@ -11,10 +11,8 @@ public class Node<T> {
         this.value = value;
         this.next = next;
     }
-
-
-
 // ================== operators =============================
+    
     public String toString(){
         return "" + value;
     }
