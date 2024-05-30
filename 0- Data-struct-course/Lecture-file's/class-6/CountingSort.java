@@ -36,8 +36,8 @@ public class CountingSort {
         //      |0|1|2|3|       |0|1|2|3|4|      |0|1|2|3|4|
         // arrC={1,1,3,5}; arrA={4,1,3,4,3};arrB={0,0,0,0,0};
         for (int i = arrA.length-1 ; i >= 0; i--) {
-            arrB[arrC[(arrA[i] - 1)]] = arrA[i];
-            arrC[(arrA[i] - 1)] = arrC[(arrA[i] - 1)] - 1;
+            arrB[arrC[arrA[i]-1]-1] = arrA[i];
+            arrC[arrA[i]-1]--;
         }
         return arrB;
     }
@@ -51,7 +51,7 @@ public class CountingSort {
     }
 
     public static void main(String[] args) {
-        int[] arrA = { 4, 1, 3, 4, 3 };
+        int[] arrA = { 4, 1, 3, 4, 3, 2 };
         System.out.print("The given array before Counting-Sort is: ArrayA = ");
         printArr(arrA);
         System.out.print("The given array after Counting-Sort is: ArrayB = ");

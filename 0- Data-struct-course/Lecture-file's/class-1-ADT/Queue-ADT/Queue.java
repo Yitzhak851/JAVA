@@ -14,7 +14,6 @@ public class Queue<T> {
         first = null;
         last = null;
     }
-    // create null
     // create with value
 
     // operation
