@@ -1,5 +1,11 @@
 import java.util.List;
 
+// This class represent class of linkedList
+// by JAVA programming language .
+// It is "generic-type" linked-list,
+// it mean that <T> can be Integer, String, Double linkedList...
+// ut can be linked-list of names, of number ....
+
 public class List<T> {
 // ================== fields ===============================
     private Node<T> first;
@@ -11,17 +17,18 @@ public class List<T> {
         size = 0;
     }
 
+
 // ================== operators =============================
     public void add(T valtT){
-        Node<T> tmpNode = new Node<List.T>(valtT);
+        Node<T> tmp = new Node<List.T>(valtT);
         if (first == null) {
-            first = tmpNode;
+            first = tmp;
         } else {
             Node<T> currNode = first;
             while (currNode.next != null ) {
                 currNode = currNode.next;
             }
-            currNode.next = tmpNode;
+            currNode.next = tmp;
         }
         size++;
     }
