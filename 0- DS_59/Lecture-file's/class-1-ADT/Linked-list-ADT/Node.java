@@ -1,16 +1,27 @@
-public class Node<T> {
+import java.util.List;
+
+/*
+ * This class represent Generic Node.
+ * @author - Yitzhak851
+ * @version - 14/07/24
+ */
+
+public class Node<E> {
 // ================== fields ===============================
-    private T value;
-    private Node<T> next;
+    private E data;
+    private Node<E> next;
 
 // ================== constructor ==========================
-    public Node(T value){
-        this(value, null);
+    public Node(E data){
+        this.data = data;
+        this.next = null;
     }
-    public Node(T value, Node<T> next){
-        this.value = value;
+
+    public Node(E data, Node<E> next){
+        this.data = value;
         this.next = next;
     }
+    
 // ================== operators =============================
     
     public String toString(){

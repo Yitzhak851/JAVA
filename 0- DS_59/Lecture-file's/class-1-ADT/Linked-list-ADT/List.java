@@ -1,15 +1,20 @@
 import java.util.List;
 
+import org.w3c.dom.Node;
+
 // This class represent class of linkedList
 // by JAVA programming language .
 // It is "generic-type" linked-list,
-// it mean that <T> can be Integer, String, Double linkedList...
+// it mean that <E> element can be Integer, String, Double linkedList...
 // ut can be linked-list of names, of number ....
 
-public class List<T> {
+public class List<E> {
 // ================== fields ===============================
-    private Node<T> first;
-    private int size;
+    // it can be String-name, Integer-number, and... linked-list
+    private Node<E> first; // this field catch the "head" of the list
+    private Node<E> next;
+    private int size;   // this field represent the "size" of the list
+    
 
 // ================== constructor ==========================
     public List(){
@@ -20,11 +25,11 @@ public class List<T> {
 
 // ================== operators =============================
     public void add(T valtT){
-        Node<T> tmp = new Node<List.T>(valtT);
+        Node<E> tmp = new Node<List.T>(valtT);  // <List.T> can be int, String, double, and...
         if (first == null) {
             first = tmp;
         } else {
-            Node<T> currNode = first;
+            Node<E> currNode = first; // create newNode
             while (currNode.next != null ) {
                 currNode = currNode.next;
             }
@@ -34,7 +39,7 @@ public class List<T> {
     }
     
     public void addFirst(T valtT){
-        Node<T> newNode = new Node<List.T>(valtT);
+        Node<E> newNode = new Node<List.T>(valtT);
         newNode.next = first;
         first = newNode;
         size++;
@@ -43,7 +48,7 @@ public class List<T> {
     //public void add(T index, T value);
     
     public int indexOf(T valT){
-        Node<T> currNode = first;
+        Node<E> currNode = first;
         int index = 0;
         while (currNode != null) {
             if (currNode.value == valT) {
@@ -58,8 +63,8 @@ public class List<T> {
     //public int valueAt(T index);
 
     public int removeValue(T valT){
-        Node<T> prev = null;
-        Node<T> current = first;
+        Node<E> prev = null;
+        Node<E> current = first;
         while (current != null && current.value != valT) {
             prev = current;
             current = current.next;
@@ -81,11 +86,12 @@ public class List<T> {
             return "()";
         }
         String str = "(";
-        Node<T> current = first;
+        Node<E> current = first;
         while (current != null) {
             str += current.value + " ";
             current = current.next;
         }
         return str.substring(0, str.length()-1+")");
     }
+
 }
