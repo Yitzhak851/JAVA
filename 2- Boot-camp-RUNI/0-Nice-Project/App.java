@@ -1,10 +1,10 @@
 import java.util.Scanner;   // import the Scanner class
-public class App {
+public class App {  
     static String[][] arrValue = new String[14][16];
-    static{ 
-    arrValue[0][6] = "K";
+    static {   
+    arrValue[0][6] = "K";  
     arrValue[0][7] = "M";
-    arrValue[0][8] = "S";
+    arrValue[0][8] = "S";    
     arrValue[0][9] = "H";
 
     arrValue[1][4] = "H";
@@ -185,51 +185,51 @@ public class App {
     arrValue[13][9] = "D";
 }
 //-------------------------------------------------------------
-    public static String[][] displayStatus(String[][] arrValue) {
-        for(int i=0; i<arrValue.length; i++){
-            for(int j=0; j<arrValue[i].length; j++){
-                if(arrValue[i][j]== null){
-                    System.out.print("   ");
-                }else{
-                    System.out.print(" "+ arrValue[i][j] + " ");
-                }
+public static String[][] displayStatus(String[][] arrValue) {
+    for(int i=0; i<arrValue.length; i++){
+        for(int j=0; j<arrValue[i].length; j++){
+            if(arrValue[i][j]== null){
+                System.out.print("   ");
+            }else{
+                System.out.print(" "+ arrValue[i][j] + " ");
             }
-            System.out.println();
         }
-        return arrValue;
+        System.out.println();
     }
+    return arrValue;
+}
 //-------------------------------------------------------------
-    public static String[][] findWord(String str,String[][] arrValue) {
-        int wordLength = str.length();
-        int n=0;
-        for(int i=0; i<arrValue.length; i++){
-            for(int j=0; j<arrValue[i].length; j++){
-                if(arrValue[i][j] == str.charAt(n)){
-                    for (int x = i - 1; x <= i + 1; x++) {
-                        for (int y = j - 1; y <= j + 1; y++) {
-                            if (x >= 0 && x < arrValue.length && y >= 0 && y < arrValue[0].length) {
-                                if (arrValue[i][j] == null){
-                                }
-                            }
-                        }
-                    }
-                }
-                continue;
-            }
-        }   
-        // run the 2D arrValue and find the str word
-        // return the 2D arrStatus with mark the str word
-        return arrStatus;
-    }
+    // public static String[][] findWord(String str,String[][] arrValue) {
+    //     int wordLength = str.length();
+    //     int n=0;
+    //     for(int i=0; i<arrValue.length; i++){
+    //         for(int j=0; j<arrValue[i].length; j++){
+    //             if(arrValue[i][j] == str.charAt(n)){
+    //                 for (int x = i - 1; x <= i + 1; x++) {
+    //                     for (int y = j - 1; y <= j + 1; y++) {
+    //                         if (x >= 0 && x < arrValue.length && y >= 0 && y < arrValue[0].length) {
+    //                             if (arrValue[i][j] == null){
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //             continue;
+    //         }
+    //     }   
+    //     // run the 2D arrValue and find the str word
+    //     // return the 2D arrStatus with mark the str word
+    //     return arrStatus;
+    // }
 //-------------------------------------------------------------
     public static void main(String[] args) {
-	System.out.println("\t \n ====== Welcome to the game ! ======\n");    
+	System.out.println("\t\t \n      ====== Welcome to the game ! ======\n");    
     displayStatus(arrValue);    
     Scanner scanner = new Scanner(System.in);
 	System.out.println("\nPlease give me some word that you want me to find: \n");
 	String str = scanner.toString(); //   >> given: "CRIME"
     //
     //
-    findWord(str,arrValue);
+    // findWord(str,arrValue);
     }
 }
