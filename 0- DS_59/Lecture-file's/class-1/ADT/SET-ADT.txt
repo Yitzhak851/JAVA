@@ -1,0 +1,3 @@
+// In this class we Set ADT
+- Object
+- Operation

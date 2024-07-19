@@ -1,23 +1,41 @@
-import java.util.List;
 
+import java.util.List;
 import org.w3c.dom.Node;
 
-// This class represent class of linkedList
-// by JAVA programming language .
+// This class represent class of linkedList by JAVA programming language .
 // It is "generic-type" linked-list,
 // it mean that <E> element can be Integer, String, Double linkedList...
 // ut can be linked-list of names, of number ....
 
-public class List<E> {
+public class LinkedListByPointer<E> {
+    public class Node<E> {
+            private E data;
+            private Node<E> next;
+        
+            public Node(E data){
+                this.data = data;
+                this.next = null;
+            }
+        
+            public Node(E data, Node<E> next){
+                this.data = value;
+                this.next = next;
+            }
+        
+            public String toString(){
+                return "" + value;
+            }
+        }
+
 // ================== fields ===============================
-    // it can be String-name, Integer-number, and... linked-list
     private Node<E> first; // this field catch the "head" of the list
+    private Node<E> tailNode; // this field catch the "tail" of the list
     private Node<E> next;
     private int size;   // this field represent the "size" of the list
     
 
 // ================== constructor ==========================
-    public List(){
+    public LinkedListByPointer(){
         first = null;
         size = 0;
     }
@@ -25,7 +43,7 @@ public class List<E> {
 
 // ================== operators =============================
     public void add(T valtT){
-        Node<E> tmp = new Node<List.T>(valtT);  // <List.T> can be int, String, double, and...
+        Node<E> tmp = new Node<LinkedListByPointer.T>(valtT);  // <List.T> can be int, String, double, and...
         if (first == null) {
             first = tmp;
         } else {
@@ -39,7 +57,7 @@ public class List<E> {
     }
     
     public void addFirst(T valtT){
-        Node<E> newNode = new Node<List.T>(valtT);
+        Node<E> newNode = new Node<LinkedListByPointer.T>(valtT);
         newNode.next = first;
         first = newNode;
         size++;
