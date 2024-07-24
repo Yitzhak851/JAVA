@@ -1,0 +1,7 @@
+Anallyse Asymptot bound
+O(n) - עליון
+Tetta(n) - הדוק
+Omega(n) - תחתון
+
+
+Anallyse recursion algo
