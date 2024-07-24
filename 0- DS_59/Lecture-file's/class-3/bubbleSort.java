@@ -12,16 +12,15 @@ public class bubbleSort {
     }
 
     public static void bubS(){
-        boolean swapped = true;
         for (int i = 0; i < arr.length - 1; i++) {
-            swapped = false; // statr loop when assume that 2 elements not swapped
+            boolean swapped = false; // statr loop when assume that 2 elements not swapped
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    // Swap arr[j] and arr[j+1]
+                    // If arr[j] > arr[j+1] => Swap 
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
-                    swapped = true; // after swapped swapped=1
+                    swapped = true; // after swapped isSwap-V
                 }
             }
             // If no 2 elements were, swapped by inner loop, then break
