@@ -27,13 +27,15 @@ public class InSort {
 
     public static void insertionSort(){
         for (int i = 1; i < arr.length; i++) {
-            int key = arr[i];
-            int k = i-1;
-            while (k >= 0 && arr[k] > key) {
-                arr[k+1] = arr[k];
-                k--;
+            int j = i; // start from: Array[1], 
+            while ( (j > 0) && (arr[j-1] > arr[j]) )  // while (prev > current) = (A[j-1] > A[j])
+            {
+                // swap
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+                j = j-1; // go on to rear - continue to check prev elements iff (j > 0) we can go
             }
-            arr[k+1] = key;
         }
     }
 }
