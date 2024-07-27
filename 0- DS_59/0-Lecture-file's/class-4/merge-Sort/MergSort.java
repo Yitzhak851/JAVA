@@ -3,27 +3,25 @@
  */
 public class MergSort {
     // Question-4-recitation-4
-    static int[] arr = {4, 12, 16, 33, 51, 56, -1, 3, 4, 11, 4, 9, 16, 33, 78};
-    static int l = arr[0];
-    static int r = arr[length-1];
 
     public static void main(String[] args) {
-        System.out.println("This program implement bubble-sort: ");
-        System.out.print("ARRAY BEFORE: ");
-        printarr();
+        int[] arr = {4, 12, 16, 33, 51, 56, -1, 3, 4, 11, 4, 9, 16, 33, 78};
+        int l = 0;              // index of left  -> 0
+        int r = arr.length-1;   // index of right -> 15
+        System.out.println("\tThis program implement bubble-sort: \nARRAY BEFORE: ");
+        printarr(arr);
         mergeSort(arr, l, r);
         System.out.print("\nARRAY AFTER : ");
-        printarr();
-        System.out.println();
+        printarr(arr + "\n");
     }
 
-    public static void mergeSort(int[] array, int left, int right) {
-        int q;
-        if ( left < right ) {
-            q = (l+r)/2; // [(l+r)/2]
-            mergeSort(array, left, q);
-            mergeSort(array, q+1, right);
-            merge(array, left, q, rright);
+    // Main function that sorts arr[l..r] using merge()
+    public static void mergeSort(int arr[], int l, int r){
+        if (l < r) {
+            int m = l + (r - l) / 2;  // Find the middle point
+            mergeSort(arr, l, m);     // Sort first and second halves
+            mergeSort(arr, m + 1, r); // Sort 
+            merge(arr, l, m, r);      // Merge the sorted halves
         }
     }
 
@@ -75,7 +73,7 @@ public class MergSort {
     }
 
 
-    public static void printarr() {
+    public static void printarr(int[] arr) {
         System.out.print("[");
         for (int i = 0; i < arr.length; i++) {
             if (i == arr.length - 1) {
