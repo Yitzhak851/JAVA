@@ -24,4 +24,15 @@ class Fibonacci {
       previous = temp;              // previous=1   ||previous=1  ||previous=2  ||previous=3  ||previous=5
     }
   }
+
+  public static int fibo(int x){
+    int prev = 0;
+    int cur = 1;    
+    for (int i=0; i < x; i++){
+      int temp = cur;
+      cur += prev;
+      prev = temp;
+    }
+    return cur;
+  }
 }
