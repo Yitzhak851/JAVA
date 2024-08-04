@@ -1,15 +1,10 @@
-// Replace all
+// Replace all - vs-code
 ctrl + H
 
 
-// PIAZZA
-
-math mode:
-(3/2)^n
-
-by typing:
-$$(3/2)^n$$
-
-or more fancy by typing:
-$$\left( \frac{3}{2} \right)^n$$    is like (3/2)^n
+// work with "PIAZZA"
+if i want to right at math mode: (3/2)^n
+by typing: $$(3/2)^n$$
+or more fancy by typing: $$\left( \frac{3}{2} \right)^n$$    
+is like (3/2)^n
 The f(x) button in the toolbar allows you to easily edit math expressions. 
