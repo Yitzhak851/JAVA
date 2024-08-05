@@ -1,0 +1,154 @@
+Conversation of bases and binary representation
+Hi,
+
+You have a recommendation on resource to strengthen the knowledge of about binary representation, changing bases and how to use it. (I don’t  find any reference about it in the lectures)
+hw7
+Editgood question 0
+Updated 2 months ago by Anonymous Calc
+the students' answer, where students collectively construct a single answer
+
+the instructors' answer, where instructors collectively construct a single answer
+There are many online resources. Here is one that seems good (showed up in a google search): https://www.geeksforgeeks.org/number-system-and-base-conversions/
+
+Another good resource is to ask a generative AI engine. Here is the result of a simple prompt with chatGPT4:
+
+please explain at a level of first year CS undergrad student the topic of number representation in different bases and how to convert between bases
+
+Number representation in different bases is a fundamental concept in computer science and mathematics. Let's break it down step by step:
+
+### What is a Number Base?
+A number base (or radix) is the number of unique digits, including zero, that a numeral system uses to represent numbers. The most common base is 10 (decimal), but there are other bases like binary (base 2), octal (base 8), and hexadecimal (base 16).
+
+### Common Bases
+1. **Decimal (Base 10):** Uses digits 0 to 9.
+2. **Binary (Base 2):** Uses digits 0 and 1.
+3. **Octal (Base 8):** Uses digits 0 to 7.
+4. **Hexadecimal (Base 16):** Uses digits 0 to 9 and letters A to F (where A=10, B=11, ..., F=15).
+
+### Representation in Different Bases
+Let's take a number and represent it in different bases.
+
+- **Decimal (Base 10):** 345
+- **Binary (Base 2):** 101011001
+- **Octal (Base 8):** 531
+- **Hexadecimal (Base 16):** 159
+
+### How to Convert Between Bases
+
+#### Decimal to Other Bases
+1. **Decimal to Binary:**
+   - Divide the decimal number by 2.
+   - Write down the remainder.
+   - Continue dividing the quotient by 2 until you reach 0.
+   - The binary representation is the remainders read from bottom to top.
+
+   Example: Convert 13 to binary
+   ```
+   13 ÷ 2 = 6 remainder 1
+   6 ÷ 2 = 3 remainder 0
+   3 ÷ 2 = 1 remainder 1
+   1 ÷ 2 = 0 remainder 1
+   Binary: 1101
+   ```
+
+2. **Decimal to Octal:**
+   - Divide the decimal number by 8.
+   - Write down the remainder.
+   - Continue dividing the quotient by 8 until you reach 0.
+   - The octal representation is the remainders read from bottom to top.
+
+   Example: Convert 345 to octal
+   ```
+   345 ÷ 8 = 43 remainder 1
+   43 ÷ 8 = 5 remainder 3
+   5 ÷ 8 = 0 remainder 5
+   Octal: 531
+   ```
+
+3. **Decimal to Hexadecimal:**
+   - Divide the decimal number by 16.
+   - Write down the remainder.
+   - Continue dividing the quotient by 16 until you reach 0.
+   - The hexadecimal representation is the remainders read from bottom to top, using A-F for remainders 10-15.
+
+   Example: Convert 345 to hexadecimal
+   ```
+   345 ÷ 16 = 21 remainder 9
+   21 ÷ 16 = 1 remainder 5
+   1 ÷ 16 = 0 remainder 1
+   Hexadecimal: 159
+   ```
+
+#### Other Bases to Decimal
+1. **Binary to Decimal:**
+   - Multiply each bit by 2 raised to the power of its position, starting from 0 on the right.
+   - Sum all the values.
+
+   Example: Convert 1101 to decimal
+   ```
+   1×2^3 + 1×2^2 + 0×2^1 + 1×2^0
+   = 8 + 4 + 0 + 1
+   = 13
+   ```
+
+2. **Octal to Decimal:**
+   - Multiply each digit by 8 raised to the power of its position, starting from 0 on the right.
+   - Sum all the values.
+
+   Example: Convert 531 to decimal
+   ```
+   5×8^2 + 3×8^1 + 1×8^0
+   = 320 + 24 + 1
+   = 345
+   ```
+
+3. **Hexadecimal to Decimal:**
+   - Multiply each digit by 16 raised to the power of its position, starting from 0 on the right.
+   - Use 10-15 for A-F respectively.
+   - Sum all the values.
+
+   Example: Convert 159 to decimal
+   ```
+   1×16^2 + 5×16^1 + 9×16^0
+   = 256 + 80 + 9
+   = 345
+   ```
+
+### Converting Between Non-Decimal Bases
+1. **Binary to Octal:**
+   - Group binary digits in sets of three from right to left.
+   - Convert each triplet to its octal equivalent.
+
+   Example: Convert 101011001 to octal
+   ```
+   001 010 110 001
+   = 1   2   6   1
+   Octal: 1261
+   ```
+
+2. **Binary to Hexadecimal:**
+   - Group binary digits in sets of four from right to left.
+   - Convert each quartet to its hexadecimal equivalent.
+
+   Example: Convert 101011001 to hexadecimal
+   ```
+   0010 1011 0011
+   = 2    B    3
+   Hexadecimal: 2B3
+   ```
+
+3. **Hexadecimal to Binary:**
+   - Convert each hexadecimal digit to its 4-bit binary equivalent.
+
+   Example: Convert 2B3 to binary
+   ```
+   2    = 0010
+   B    = 1011
+   3    = 0011
+   Binary: 001010110011
+   ```
+
+Understanding these conversions is crucial for tasks such as computer programming, data encoding, and understanding computer architecture. Each base has its applications, especially binary in digital systems and hexadecimal in programming and memory addressing.
+
+thanks! 0
+Updated 2 months ago by Shay Mozes
