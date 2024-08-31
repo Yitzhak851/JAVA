@@ -22,12 +22,10 @@ public class QuickSort {
         }
     }
 
-    private static <T extends Comparable<T>> int partition(T[] array, int low, int high) {
-        // Select a random pivot and swap with the last element
+    private static int partition(int[] array, int low, int high) {
         swap(array, high, randomGenerator.nextInt(high - low + 1) + low);
-        T pivot = array[high];
+        int pivot = array[high];
         int i = low - 1;
-
         for (int j = low; j < high; j++) {
             if (array[j].compareTo(pivot) <= 0) {
                 i++;
@@ -38,14 +36,13 @@ public class QuickSort {
         return i + 1;
     }
 
-    private static <T extends Comparable<T>> void swap(T[] array, int i, int j) {
+    private static void swap(int[] array, int i, int j) {
         if (i != j) {
-            T temp = array[i];
+            int temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
     }
 
-    
     
 }
